@@ -1,3 +1,5 @@
+[![Frontend CI](https://github.com/kamyab-nazari/Srandom-Frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/kamyab-nazari/Srandom-Frontend/actions/workflows/ci.yml)
+
 # Srandom-Frontend
 
 ## Project setup
