@@ -1,17 +1,29 @@
-# Srandom-Frontend
+# srandom-frontend
 
-## Beschreibung
-Die folgende Applikation "Srandom" erfüllt die Aufgabe, zufällige Lieder und Empfehlungen den Besucher vorzuschlagen und diese mit einem Klick für weiteres hören zur Verfügung zustellen. 
+## Project setup
+```
+npm install
+```
 
-## Mitglieder
-* Florina Jonuzi (@JonuziFlorina)
-* Kamyab Nazari (@kamyab-nazari)
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-## Tech stack
-* Java JDK 17
-* Gradle 7.4
-* NodeJs 16.14
-* Spring Boot 2.6.2
-* Thymeleaf, Spring Web, Spring Boot DevTools 
-* Heroku
-* Vue.js
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Run your unit tests
+```
+npm run test:unit
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
