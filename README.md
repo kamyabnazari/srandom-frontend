@@ -1,4 +1,4 @@
-# srandom-frontend
+# Srandom-Frontend
 
 ## Project setup
 ```
