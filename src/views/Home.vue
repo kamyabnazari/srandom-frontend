@@ -1,18 +1,18 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <Srandom msg="Welcome to Srandom"/>
+    <WelcomeComponent msg="Welcome to Srandom"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Srandom from '@/components/Srandom.vue'
+import WelcomeComponent from '@/components/Welcome'
 
 export default {
   name: 'HomeView',
   components: {
-    Srandom
+    WelcomeComponent
   }
 }
 </script>

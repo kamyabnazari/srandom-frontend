@@ -1,14 +1,14 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Srandom</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #252633">
+    <a class="navbar-brand" href="/"><h1>Srandom</h1></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleMobileMenu" aria-controls="toggleMobileMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse" id="toggleMobileMenu">
       <ul class="navbar-nav">
-        <router-link class="nav-link" to="/">Home</router-link>
-        <router-link class="nav-link" to="/about">About</router-link>
-        <router-link class="nav-link" to="/songs">Songs</router-link>
+        <router-link class="nav-link" to="/"><h5>Home</h5></router-link>
+        <router-link class="nav-link" to="/about"><h5>About</h5></router-link>
+        <router-link class="nav-link" to="/songs"><h5>Songs</h5></router-link>
       </ul>
     </div>
   </nav>
@@ -16,8 +16,7 @@
 
 <script>
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Navbar'
+  name: 'NavbarComponent'
 }
 </script>
 
