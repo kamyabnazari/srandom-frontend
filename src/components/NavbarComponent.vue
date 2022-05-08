@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #252633">
-    <a class="navbar-brand" href="/"><h1>Srandom</h1></a>
+    <a class="navbar-brand" href="/"><h1 style="font-weight: 600">Srandom</h1></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleMobileMenu" aria-controls="toggleMobileMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

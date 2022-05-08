@@ -7,7 +7,7 @@
 
 <script>
 // @ is an alias to /src
-import WelcomeComponent from '@/components/Welcome'
+import WelcomeComponent from '@/components/WelcomeComponent'
 
 export default {
   name: 'HomeView',
