@@ -1,17 +1,14 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <button-component></button-component>
+    <img alt="Vue logo" src="../assets/srandomDesign.png" style="width: 30%; height: 30%; border-radius: 50px; margin-top: 50px;">
   </div>
 </template>
 
 <script>
 
-import ButtonComponent from '@/components/ButtonComponent'
-
 export default {
   name: 'WelcomeComponent',
-  components: { ButtonComponent },
   props: {
     msg: String
   }
