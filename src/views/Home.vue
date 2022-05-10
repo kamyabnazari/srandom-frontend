@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img alt="Vue logo" src="../assets/logo.png" style="width: 15%; height: 15%">
     <WelcomeComponent msg="Welcome to Srandom"/>
   </div>
 </template>
