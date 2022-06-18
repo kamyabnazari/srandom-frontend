@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" style="width: 10%; height: 10%">
-    <WelcomeComponent msg="Welcome to Srandom"/>
+    <WelcomeComponent msg="Click to get your random song!"/>
   </div>
 </template>
 
