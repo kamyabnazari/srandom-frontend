@@ -14,13 +14,16 @@
           <router-link class="nav-link" to="/about us">About Us</router-link>
       </ul>
     </div>
+    <button-component>Account</button-component>
+    <button-component>Sign In</button-component>
   </nav>
 </template>
 
 <script>
+import ButtonComponent from '@/components/ButtonComponent'
 export default {
   name: 'NavbarComponent',
-  components: {}
+  components: { ButtonComponent }
 
 }
 </script>
