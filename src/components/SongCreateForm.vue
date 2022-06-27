@@ -65,7 +65,7 @@ export default {
         redirect: 'follow'
       }
 
-      fetch('https://srandom-app-frontend.herokuapp.com/api/v1/songs', requestOptions)
+      fetch('https://srandom-app-frontend.herokuapp.com', requestOptions)
         .catch(error => console.log('error', error))
     }
   }
