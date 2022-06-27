@@ -4,7 +4,6 @@ import About from '../views/AboutUs.vue'
 import Songs from '../views/Songs.vue'
 import Songgenerator from '@/views/Songgenerator'
 import NotFound from '../views/NotFound.vue'
-import Account from '../views/Account.vue'
 
 const routes = [
   {
@@ -31,11 +30,6 @@ const routes = [
     path: '/:catchAll(.*)',
     name: 'Notfound',
     component: NotFound
-  },
-  {
-    path: '/account',
-    name: 'Account',
-    component: Account
   }
 ]
 
