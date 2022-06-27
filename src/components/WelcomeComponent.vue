@@ -24,7 +24,6 @@ h1 {
   width: 100%;
 }
 
-/* Make the image responsive */
 .container img {
   width: 200%;
   height: 200%;
