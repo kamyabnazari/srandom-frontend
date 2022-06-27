@@ -11,7 +11,7 @@
           <router-link class="nav-link" to="/Songgenerator">Songgenerator</router-link>
           <router-link class="nav-link" to="/songs">Songs</router-link>
           <router-link class="nav-link" to="/guide">Guide</router-link>
-          <router-link class="nav-link" to="/about us">About Us</router-link>
+          <router-link class="nav-link" to="/About-us">About Us</router-link>
       </ul>
     </div>
     <button-component>Account</button-component>

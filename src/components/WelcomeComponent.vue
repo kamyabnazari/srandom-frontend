@@ -2,7 +2,7 @@
   <div class="container">
     <h1>{{ msg }}</h1>
     <img alt="Vue logo" src="../assets/srandomDesign.png" style="width: 100%; height: 60%; border-radius: 50px; margin-top: 5px;">
-    <button class="btn">Song vorschlagen</button>
+    <button class="btn">My Song</button>
   </div>
 </template>
 <script>

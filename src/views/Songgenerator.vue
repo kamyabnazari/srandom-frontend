@@ -18,7 +18,7 @@
 
 <script>
 
-import SongCard from '@/components/Songcard'
+import SongCard from '@/components/SongCard'
 
 export default {
   name: 'Song-Generator',
