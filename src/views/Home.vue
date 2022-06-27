@@ -1,9 +1,6 @@
 <template>
-  <div class="home">
-    <WelcomeComponent msg="Click to get your random song!"/>
-  </div>
+  <WelcomeComponent msg="click the button for a random song"/>
 </template>
-
 <script>
 // @ is an alias to /src
 import WelcomeComponent from '@/components/WelcomeComponent'
