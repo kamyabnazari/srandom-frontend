@@ -29,7 +29,6 @@ h1 {
   height: 200%;
 }
 
-/* Style the button and place it in the middle of the container/image */
 .container .btn {
   position: absolute;
   top: 50%;
