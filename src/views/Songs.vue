@@ -1,36 +1,48 @@
 <template>
-  <h1>Songs</h1>
-  <div class="row row-cols-1 row-cols-md-2 g-4">
-    <div class="col" v-for="song in songs" :key="song.id">
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{song.titel}}</h5>
-            <h6 class="card-subtitle">{{song.autor}}</h6>
-            <h6 class="card-subtitle">{{song.erscheinungsdatum}}</h6>
-            <p class="card-text">{{song.genre}} , {{song.songLink}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <body>
+  <h1>Alle Songs</h1>
+  <div class="container-fluid">
+    <song-card-list :songs="this.songs"></song-card-list>
   </div>
+  <song-create-form @created="addSong"></song-create-form>
+  </body>
 </template>
 
 <script>
+import SongCardList from '@/components/SongCardList'
+import SongCreateForm from '@/components/SongCreateForm'
+
 export default {
-  name: 'SongsView',
+  name: 'Songs-',
+  components: {
+    SongCardList,
+    SongCreateForm
+  },
   data () {
     return {
       songs: []
     }
   },
+  methods: {
+    addSong (songLocation) {
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + songLocation
+      const requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      }
+      fetch(endpoint, requestOptions)
+        .then(response => response.json())
+        .then(song => this.songs.push(song))
+        .catch(error => console.log('error', error))
+    }
+  },
   mounted () {
-    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'
-    const requestOptions = {
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/songs'
+    const requestOption = {
       method: 'GET',
       redirect: 'follow'
     }
-    fetch(endpoint, requestOptions)
+    fetch(endpoint, requestOption)
       .then(response => response.json())
       .then(result => result.forEach(song => {
         this.songs.push(song)
@@ -41,5 +53,11 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  background-color: #212529;
+  color: #eee9e9;
+}
+body {background-color: #181a1a
+}
 
 </style>
