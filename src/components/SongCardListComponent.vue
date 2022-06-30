@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import SongCard from '@/components/SongCard'
+import SongCard from '@/components/SongCardComponent'
 
 export default {
   name: 'Song-',

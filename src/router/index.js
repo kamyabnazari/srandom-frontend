@@ -1,9 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import About from '../views/AboutUs.vue'
-import Songs from '../views/Songs.vue'
-import Songgenerator from '@/views/Songgenerator'
-import NotFound from '../views/NotFound.vue'
+import About from '../views/other/AboutUs.vue'
+import Songs from '../views/song/Songs.vue'
+import RandomSong from '@/views/song/RandomSong'
+import NotFound from '../views/other/NotFound.vue'
+import AccountLogin from '@/views/account/AccountLogin'
+import AccountRegister from '@/views/account/AccountRegister'
 
 const routes = [
   {
@@ -14,7 +16,7 @@ const routes = [
   {
     path: '/random-song',
     name: 'RandomSong',
-    component: Songgenerator
+    component: RandomSong
   },
   {
     path: '/about-us',
@@ -25,6 +27,16 @@ const routes = [
     path: '/songs',
     name: 'Songs',
     component: Songs
+  },
+  {
+    path: '/account-login',
+    name: 'AccountLogin',
+    component: AccountLogin
+  },
+  {
+    path: '/account-register',
+    name: 'AccountRegister',
+    component: AccountRegister
   },
   {
     path: '/:catchAll(.*)',

@@ -1,6 +1,6 @@
 <template>
-  <navbar-component></navbar-component>
-  <router-view></router-view>
+  <navbar-component/>
+  <router-view/>
 </template>
 
 <script>
@@ -15,9 +15,8 @@ export default {
 <style>
 #app {
   font-family: sans-serif;
+  color: var(--secondary-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--secondary-color);
 }
-
 </style>

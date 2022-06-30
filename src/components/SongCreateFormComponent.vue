@@ -1,11 +1,13 @@
 <template>
-  <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#song-create-offcanvas" aria-controls="#song-create-offcanvas">
+  <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#song-create-offcanvas"
+          aria-controls="#song-create-offcanvas">
     <i class="bi songs">Song zur Playlist hinzufügen ➕</i>
   </button>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="song-create-offcanvas" aria-labelledby="offcanvas-label">
     <div class="offcanvas-header">
       <h5 id="offcanvas-label">Neue Songs</h5>
-      <button type="button" id="close-offcanvas" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <button type="button" id="close-offcanvas" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+              aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
       <div class="mb-3">
@@ -16,11 +18,11 @@
         </div>
       </div>
       <div class="mb-3">
-      <label for="autor" class="form-label">Autor</label>
-      <input type="text" class="form-control" id="autor" v-model="autor" required>
-      <div class="invalid-feedback">
-        Please provide the autor.
-      </div>
+        <label for="autor" class="form-label">Autor</label>
+        <input type="text" class="form-control" id="autor" v-model="autor" required>
+        <div class="invalid-feedback">
+          Please provide the autor.
+        </div>
       </div>
       <div class="mb-3">
         <label for="songLink" class="form-label">songLink</label>

@@ -1,19 +1,19 @@
 <template>
-  <body>
-  <h1>Alle Songs</h1>
+  <div class="page-header">
+    <h1>Songs</h1>
+  </div>
   <div class="container-fluid">
     <song-card-list :songs="this.songs"></song-card-list>
   </div>
   <song-create-form @created="addSong"></song-create-form>
-  </body>
 </template>
 
 <script>
-import SongCardList from '@/components/SongCardList'
-import SongCreateForm from '@/components/SongCreateForm'
+import SongCardList from '@/components/SongCardListComponent'
+import SongCreateForm from '@/components/SongCreateFormComponent'
 
 export default {
-  name: 'Songs-',
+  name: 'AllSongs',
   components: {
     SongCardList,
     SongCreateForm
@@ -53,11 +53,5 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  background-color: #212529;
-  color: #eee9e9;
-}
-body {background-color: #181a1a
-}
 
 </style>

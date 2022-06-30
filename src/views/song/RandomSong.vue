@@ -1,24 +1,16 @@
 <template>
-  <body>
-  <h1>Ihr nächster Song</h1>
+  <div class="page-header">
+    <h1>Your Song</h1>
+  </div>
   <div class="col" v-for="song in songs" :key="song.id">
-    <div class="btn-group">
-      <a class="btn  btn-default btn-lg btn-general btn-white smooth-scroll"
-         :href="song.songLink" target="_blank">
-        Zum Song
-      </a>
-      <a href="/songgenerator" class="btn btn-danger btn-lg" role="button">NEUER SONG</a>
-    </div>
-    <br><br>
     <song-card :song="song"></song-card>
     <br><br>
   </div>
-  </body>
 </template>
 
 <script>
 
-import SongCard from '@/components/SongCard'
+import SongCard from '@/components/SongCardComponent'
 
 // Function to generate random number
 function randomNumber (min, max) {
@@ -26,7 +18,7 @@ function randomNumber (min, max) {
 }
 
 export default {
-  name: 'Song-Generator',
+  name: 'RandomSong',
   components: {
     SongCard
   },
@@ -57,10 +49,6 @@ export default {
 </script>
 
 <style scoped>
-body { background-image: url("../assets/srandomDesign.png"); }
-h1 {color: #ffffff;
-  background-color: #212529;
-}
 a {
   color: #eee9e9;
   font-size: 25px;
@@ -68,6 +56,7 @@ a {
   background-color: #212529;
   border: 3px #eee9e9 solid;
 }
+
 a2{
   color: #eee9e9;
   font-size: 20px;
@@ -75,6 +64,7 @@ a2{
   background-color: #212529;
   border: 3px #eee9e9 solid;
 }
+
 songs-card{
   size: 20px;
 }

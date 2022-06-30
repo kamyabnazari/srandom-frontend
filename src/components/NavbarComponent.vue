@@ -7,15 +7,14 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="toggleMobileMenu">
-      <ul class="navbar-nav mr-auto align-items-center">
+      <ul class="navbar-nav mr-auto">
         <router-link class="nav-link" to="/"><h6>Home</h6></router-link>
-        <router-link class="nav-link" to="/random-song"><h6>Random Song</h6></router-link>
         <router-link class="nav-link" to="/songs"><h6>Songs</h6></router-link>
         <router-link class="nav-link" to="/about-us"><h6>About Us</h6></router-link>
       </ul>
-      <div class="ms-auto">
-        <button type="button" class="custom-button button-white btn-lg"><h6>Register</h6></button>
-        <button type="button" class="custom-button button-yellow btn-lg"><h6>Login</h6></button>
+      <div class="btn-group ms-auto" role="group">
+        <button type="button" class="custom-button button-white btn-lg" @click="$router.push({path: '/account-register'})"><h6>Register</h6></button>
+        <button type="button" class="custom-button button-yellow btn-lg" @click="$router.push({path: '/account-login'})"><h6>Login</h6></button>
       </div>
     </div>
   </nav>
@@ -34,24 +33,13 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  font-weight: 600;
-  margin-bottom: 0;
-}
-
-h6 {
-  font-weight: bold;
-  margin-bottom: 0;
-}
-
 nav {
   padding-left: 30px;
   padding-right: 30px;
 }
 
 .nav-link {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 5px 10px;
 }
 
 .navbar {
@@ -59,7 +47,8 @@ nav {
 }
 
 .navbar-brand {
-  margin-right: 0;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -70,9 +59,15 @@ nav {
   color: var(--primary-color);
 }
 
-button {
-  margin-left: 10px;
-  margin-right: 10px;
+h1 {
+  font-weight: 600;
+  margin-bottom: 0;
+  color: var(--element-color);
+}
+
+h6 {
+  font-weight: bold;
+  margin-bottom: 0;
 }
 
 </style>
