@@ -3,7 +3,8 @@
   <div class="d-flex justify-content-center align-items-center">
     <img class="banner-image" alt="Vue logo" src="../assets/srandomDesign.png">
     <div class="random-button">
-      <font-awesome-icon icon="fa-solid fa-circle-play" class="play-icon" beat size="10x" style="--fa-animation-duration: 2.5s; --fa-beat-scale: 1.2;"
+      <font-awesome-icon icon="fa-solid fa-circle-play" class="play-icon" beat size="10x"
+                         style="--fa-animation-duration: 2.5s; --fa-beat-scale: 1.2;"
                          @click="$router.push({path: '/random-song'})"/>
     </div>
   </div>
@@ -34,8 +35,8 @@ h1 {
 
 .random-button {
   position: absolute;
-  margin:0 auto;
-  text-align:center
+  margin: 0 auto;
+  text-align: center
 }
 
 .play-icon {

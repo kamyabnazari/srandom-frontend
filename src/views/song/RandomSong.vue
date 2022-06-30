@@ -57,7 +57,7 @@ a {
   border: 3px #eee9e9 solid;
 }
 
-a2{
+a2 {
   color: #eee9e9;
   font-size: 20px;
   display: inline;
@@ -65,7 +65,7 @@ a2{
   border: 3px #eee9e9 solid;
 }
 
-songs-card{
+songs-card {
   size: 20px;
 }
 </style>

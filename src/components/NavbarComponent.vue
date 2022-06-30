@@ -13,8 +13,10 @@
         <router-link class="nav-link" to="/about-us"><h6>About Us</h6></router-link>
       </ul>
       <div class="btn-group ms-auto" role="group">
-        <button type="button" class="custom-button button-white btn-lg" @click="$router.push({path: '/account-register'})"><h6>Register</h6></button>
-        <button type="button" class="custom-button button-yellow btn-lg" @click="$router.push({path: '/account-login'})"><h6>Login</h6></button>
+        <button type="button" class="custom-button button-white btn-lg"
+                @click="$router.push({path: '/account-register'})"><h6>Register</h6></button>
+        <button type="button" class="custom-button button-yellow btn-lg"
+                @click="$router.push({path: '/account-login'})"><h6>Login</h6></button>
       </div>
     </div>
   </nav>

@@ -2,7 +2,7 @@
   <div class="card100">
     <div class="card-body">
       <h5 class="card-title">{{ song.titel }}</h5>
-      <h6 class="card-title">{{song.autor}}</h6>
+      <h6 class="card-title">{{ song.autor }}</h6>
       <p class="card-text">
         Genre: {{ song.genre }}
       </p>
@@ -26,19 +26,22 @@ export default {
 </script>
 
 <style scoped>
-.card-body{
+.card-body {
   background: #212529;
 }
-.card-img-top{
+
+.card-img-top {
   height: 600px;
   width: auto;
   border: 5px #eee9e9 solid;
   padding: 0;
 }
-.card-title{
+
+.card-title {
   color: #eee9e9;
 }
-.card-text{
+
+.card-text {
   color: #eee9e9;
 }
 </style>
