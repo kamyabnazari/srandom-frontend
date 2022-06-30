@@ -20,6 +20,11 @@
 
 import SongCard from '@/components/SongCard'
 
+// Function to generate random number
+function randomNumber (min, max) {
+  return Math.random().toFixed() * (max - min) + min
+}
+
 export default {
   name: 'Song-Generator',
   components: {
@@ -37,16 +42,17 @@ export default {
     }
   },
   mounted () {
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'
     const requestOptions = {
       method: 'GET',
       redirect: 'follow'
     }
-    const random = Math.floor(Math.random() * (15 - 11 + 1)) + 11
-    fetch('https://srandom-app-frontend.herokuapp.com/api/v1/songs' + random, requestOptions)
+    fetch(endpoint + '/' + randomNumber(1, 9), requestOptions)
       .then(response => response.json())
       .then(result => this.songs.push(result))
       .catch(error => console.log('error', error))
   }
+
 }
 </script>
 

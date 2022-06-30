@@ -12,8 +12,8 @@ const routes = [
     component: Home
   },
   {
-    path: '/songgenerator',
-    name: 'Songgenerator',
+    path: '/random-song',
+    name: 'RandomSong',
     component: Songgenerator
   },
   {

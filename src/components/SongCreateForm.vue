@@ -57,7 +57,7 @@ export default {
         autor: this.autor,
         songLink: this.songLink
       })
-
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'
       var requestOptions = {
         method: 'POST',
         headers: myHeaders,
@@ -65,7 +65,7 @@ export default {
         redirect: 'follow'
       }
 
-      fetch('https://srandom-app-frontend.herokuapp.com', requestOptions)
+      fetch(endpoint, requestOptions)
         .catch(error => console.log('error', error))
     }
   }
