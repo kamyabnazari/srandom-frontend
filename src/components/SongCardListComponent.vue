@@ -1,7 +1,6 @@
 <template>
-  <div class="row row-cols-1 row-cols-md-4 g-4">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-5">
     <div class="col" v-for="song in songs" :key="song.id">
-      <h1>{{ song.title }}</h1>
       <song-card :song="song"></song-card>
     </div>
   </div>
