@@ -1,5 +1,5 @@
 <template>
-  <div class="row row-cols-auto gap-5 justify-content-center">
+  <div class="row row-cols-auto gap-5 justify-content-center mb-5">
     <div class="col" v-for="song in songs" :key="song.id">
       <song-card :song="song"></song-card>
     </div>

@@ -1,19 +1,53 @@
 <template>
-  <h1 class="page-header">Your <span style="color: var(--primary-color)">song</span> </h1>
-  <div class="col" v-for="song in songs" :key="song.id">
-    <song-card :song="song"></song-card>
-    <br><br>
+  <h1 class="page-header">Your <span style="color: var(--primary-color)">song</span></h1>
+
+  <div class="container align-items-center">
+    <div class="row row-cols-auto gap-5 align-items-center">
+      <div class="col-sm random-song">
+        <h1 class="list-header" style="color: var(--warning-color)">Favorites</h1>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Cras justo odio
+            <span class="badge badge-primary badge-pill">14</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Dapibus ac facilisis in
+            <span class="badge badge-primary badge-pill">2</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Morbi leo risus
+            <span class="badge badge-primary badge-pill">1</span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm random-song">
+        <div v-for="song in songs" :key="song.id">
+          <song-card :song="song"></song-card>
+        </div>
+      </div>
+      <div class="col-sm random-song">
+        <h1 class="list-header" style="color: var(--important-color)">Recommended</h1>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Cras justo odio
+            <span class="badge badge-primary badge-pill">14</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Dapibus ac facilisis in
+            <span class="badge badge-primary badge-pill">2</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Morbi leo risus
+            <span class="badge badge-primary badge-pill">1</span>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-
 import SongCard from '@/components/SongCardComponent'
-
-// Function to generate random number
-function randomNumber (min, max) {
-  return Math.random().toFixed() * (max - min) + min
-}
 
 export default {
   name: 'RandomSong',
@@ -37,7 +71,7 @@ export default {
       method: 'GET',
       redirect: 'follow'
     }
-    fetch(endpoint + '/' + randomNumber(1, 9), requestOptions)
+    fetch(endpoint + '/6', requestOptions)
       .then(response => response.json())
       .then(result => this.songs.push(result))
       .catch(error => console.log('error', error))
@@ -47,23 +81,8 @@ export default {
 </script>
 
 <style scoped>
-a {
-  color: #eee9e9;
-  font-size: 25px;
-  display: inline;
-  background-color: #212529;
-  border: 3px #eee9e9 solid;
-}
-
-a2 {
-  color: #eee9e9;
-  font-size: 20px;
-  display: inline;
-  background-color: #212529;
-  border: 3px #eee9e9 solid;
-}
-
-songs-card {
-  size: 20px;
+.random-song {
+  background-color: #2DCA8C;
+  text-align: -webkit-center;
 }
 </style>
