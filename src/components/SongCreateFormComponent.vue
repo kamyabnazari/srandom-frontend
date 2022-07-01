@@ -14,26 +14,30 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form @submit="createSong">
             <div class="mb-3">
               <label for="title" class="form-label">Title</label>
-              <input type="text" class="form-control" id="title" placeholder="song name" v-model="titel" required>
+              <input type="text" minlength="1" maxlength="40" class="form-control" id="title" placeholder="song name"
+                     v-model="titel" required>
             </div>
             <div class="mb-3">
               <label for="author" class="form-label">Author</label>
-              <input type="text" class="form-control" id="author" placeholder="authors name" v-model="autor" required>
+              <input type="text" minlength="1" maxlength="40" class="form-control" id="author"
+                     placeholder="authors name" v-model="autor" required>
             </div>
             <div class="mb-3">
               <label for="releaseYear" class="form-label">Release year</label>
-              <input type="text" class="form-control" id="releaseYear" placeholder="2022" v-model="erscheinungsdatum" required>
+              <input type="number" min="1800" max="9999" class="form-control" id="releaseYear" placeholder="2022"
+                     v-model="erscheinungsdatum" required>
             </div>
             <div class="mb-3">
               <label for="songLink" class="form-label">Song Link</label>
-              <input type="text" class="form-control" id="songLink" placeholder="https://song-link.example" v-model="songLink" required>
+              <input type="text" minlength="1" maxlength="100" class="form-control" id="songLink"
+                     placeholder="https://song-link.example" v-model="songLink" required>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cancel</button>
-              <button class="btn btn-primary me-3 btn-lg" type="submit" @click="createSong">Create</button>
+              <button class="btn btn-primary me-3 btn-lg" type="submit" value="submit">Create</button>
             </div>
           </form>
         </div>

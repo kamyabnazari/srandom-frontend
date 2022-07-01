@@ -65,4 +65,8 @@ export default {
 .badge-secondary {
   background-color: var(--important-color);
 }
+
+a:hover {
+  color: var(--element-color);
+}
 </style>
