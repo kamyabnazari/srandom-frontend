@@ -33,7 +33,9 @@ export default {
 }
 
 .card-body {
+  background-color: var(--secondary-color);
   border-radius: 10px;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 55%) !important;
 }
 
 .card-img-box {
@@ -48,12 +50,12 @@ export default {
 }
 
 .card-title {
-  color: var(--secondary-color);
+  color: var(--element-color);
   font-weight: bold;
 }
 
 .card-text {
-  color: var(--secondary-color);
+  color: var(--element-color);
 }
 
 .badge-primary {
