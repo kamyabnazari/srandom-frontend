@@ -1,7 +1,5 @@
 <template>
-  <div class="page-header">
-    <h1>Register</h1>
-  </div>
+  <h1 class="page-header">Register</h1>
 </template>
 
 <script>

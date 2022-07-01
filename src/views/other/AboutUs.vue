@@ -1,7 +1,5 @@
 <template>
-  <div class="page-header">
-    <h1>About Us</h1>
-  </div>
+  <h1 class="page-header">About Us</h1>
   <div class="d-flex justify-content-center align-items-center flex-column">
     <div class="card mb-5 info-card">
       <div class="card-body m-4">

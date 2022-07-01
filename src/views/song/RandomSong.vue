@@ -1,7 +1,5 @@
 <template>
-  <div class="page-header">
-    <h1>Your Song</h1>
-  </div>
+  <h1 class="page-header">Your <span style="color: var(--primary-color)">song</span> </h1>
   <div class="col" v-for="song in songs" :key="song.id">
     <song-card :song="song"></song-card>
     <br><br>

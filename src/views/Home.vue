@@ -1,5 +1,5 @@
 <template>
-  <h1>Click to get <span style="color: var(--primary-color)">your</span> random song</h1>
+  <h1 class="page-header">Click to get <span style="color: var(--primary-color)">your</span> random song</h1>
   <div class="d-flex justify-content-center align-items-center">
     <img class="banner-image" alt="Vue logo" src="../assets/srandomDesign.png">
     <div class="random-button">
@@ -17,14 +17,6 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  text-align: center;
-  font-weight: 700;
-  font-size: 55px;
-  padding: 50px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
 
 .banner-image {
   max-width: 70%;

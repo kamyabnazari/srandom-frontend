@@ -4,11 +4,11 @@
       <div class="d-flex justify-content-center align-items-center card-img-box">
         <font-awesome-icon icon="fa-solid fa-music" class="card-img" size="5x" beat-fade style="--fa-animation-duration: 3s; --fa-fade-opacity: 1.0;" />
       </div>
-      <h5 class="card-title mb-3 mt-4">{{ song.titel }}</h5>
+      <h5 class="card-title mb-3 mt-3">{{ song.titel }}</h5>
       <h6 class="card-title mb-3">{{ song.autor }}</h6>
       <p class="card-text mb-3">{{ song.erscheinungsdatum }}</p>
       <p class="card-text mb-3">Genre: {{ song.genre }}</p>
-      <a href="{{song.songLink}}" class="custom-button button-yellow btn-lg w-50">Listen</a>
+      <a v-bind:href="song.songLink" class="custom-button button-yellow btn-lg w-50 mb-4">Listen</a>
     </div>
   </div>
 </template>
@@ -27,10 +27,8 @@ export default {
 
 <style scoped>
 .card {
-  min-width: 250px;
-  max-width: 300px;
-  height: 450px;
-
+  width: 300px;
+  height: 500px;
 }
 
 .card-body {
