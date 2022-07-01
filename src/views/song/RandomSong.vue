@@ -1,46 +1,36 @@
 <template>
   <h1 class="page-header">Your <span style="color: var(--primary-color)">song</span></h1>
 
-  <div class="container align-items-center">
-    <div class="row row-cols-auto gap-5 align-items-center">
-      <div class="col-sm random-song">
+  <div class="container-fluid">
+    <div class="row row-cols-auto gap-5 d-flex justify-content-center px-5">
+      <div class="col-sm">
         <h1 class="list-header" style="color: var(--warning-color)">Favorites</h1>
-        <ul class="list-group">
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Cras justo odio
-            <span class="badge badge-primary badge-pill">14</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Dapibus ac facilisis in
-            <span class="badge badge-primary badge-pill">2</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Morbi leo risus
-            <span class="badge badge-primary badge-pill">1</span>
-          </li>
-        </ul>
+        <div class="list-group align-items-center">
+          <button type="button" class="shadow-sm list-group-item list-group-item-action"> Song Name</button>
+        </div>
       </div>
       <div class="col-sm random-song">
         <div v-for="song in songs" :key="song.id">
           <song-card :song="song"></song-card>
         </div>
       </div>
-      <div class="col-sm random-song">
-        <h1 class="list-header" style="color: var(--important-color)">Recommended</h1>
-        <ul class="list-group">
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Cras justo odio
-            <span class="badge badge-primary badge-pill">14</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Dapibus ac facilisis in
-            <span class="badge badge-primary badge-pill">2</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Morbi leo risus
-            <span class="badge badge-primary badge-pill">1</span>
-          </li>
-        </ul>
+      <div class="col-sm">
+        <div class="card mb-5 info-card p-5 shadow ">
+          <h5 class="list-header mb-5 text-center" style="color: var(--important-color)">Guide</h5>
+          <h5 class="card-text">
+            Click on the refresh button to get another
+            random song
+            <br><br>
+            Click on the heart button
+            to save it for later
+            <br><br>
+            If you dont like the songs
+            remove them just easily
+            <br><br>
+            If you have more songs you
+            want to add, just go to songs and one
+          </h5>
+        </div>
       </div>
     </div>
   </div>
@@ -81,8 +71,20 @@ export default {
 </script>
 
 <style scoped>
+.container-fluid {
+  background-color: var(--background-color);
+}
+
 .random-song {
-  background-color: #2DCA8C;
   text-align: -webkit-center;
+}
+
+.info-card {
+  max-width: 600px;
+  margin: 10px;
+}
+
+.list-group {
+  min-width: 300px;
 }
 </style>

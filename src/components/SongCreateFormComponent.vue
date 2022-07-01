@@ -1,7 +1,7 @@
 <template>
   <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#song-create-offcanvas"
           aria-controls="#song-create-offcanvas">
-    <i class="bi songs">Add Song ➕</i>
+    <i class="bi songs">Add Song</i>
   </button>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="song-create-offcanvas" aria-labelledby="offcanvas-label">
     <div class="offcanvas-header">
