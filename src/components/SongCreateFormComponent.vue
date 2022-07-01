@@ -2,7 +2,7 @@
   <button class="btn sticky-button" data-bs-toggle="modal" data-bs-target="#exampleModal"
           aria-controls="#exampleModal">
     <i class="bi songs">
-      <font-awesome-icon icon="fa-solid fa-plus" class="card-img" size="2x" />
+      <font-awesome-icon icon="fa-solid fa-plus" class="card-img" size="2x"/>
     </i>
   </button>
 
@@ -16,38 +16,26 @@
         <div class="modal-body">
           <form>
             <div class="mb-3">
-              <label for="titel" class="form-label">Title</label>
-              <input type="text" class="form-control" id="titel" v-model="titel" required>
-              <div class="invalid-feedback">
-                Please provide the title.
-              </div>
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" placeholder="song name" v-model="titel" required>
             </div>
             <div class="mb-3">
-              <label for="autor" class="form-label">Author</label>
-              <input type="text" class="form-control" id="autor" v-model="autor" required>
-              <div class="invalid-feedback">
-                Please provide the autor.
-              </div>
+              <label for="author" class="form-label">Author</label>
+              <input type="text" class="form-control" id="author" placeholder="authors name" v-model="autor" required>
             </div>
             <div class="mb-3">
-              <label for="autor" class="form-label">Year of release</label>
-              <input type="text" class="form-control" id="autor" v-model="erscheinungsjahr" required>
-              <div class="invalid-feedback">
-                Please provide the autor.
-              </div>
+              <label for="releaseYear" class="form-label">Release year</label>
+              <input type="text" class="form-control" id="releaseYear" placeholder="2022" v-model="erscheinungsdatum" required>
             </div>
             <div class="mb-3">
               <label for="songLink" class="form-label">Song Link</label>
-              <input type="text" class="form-control" id="songLink" v-model="songLink" required>
-              <div class="invalid-feedback">
-                Please provide the Song Link.
-              </div>
+              <input type="text" class="form-control" id="songLink" placeholder="https://song-link.example" v-model="songLink" required>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cancel</button>
+              <button class="btn btn-primary me-3 btn-lg" type="submit" @click="createSong">Create</button>
             </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>
-          <button class="btn btn-primary me-3 btn-lg" type="submit" @click="createSong">Create</button>
         </div>
       </div>
     </div>
@@ -61,7 +49,7 @@ export default {
     return {
       titel: '',
       autor: '',
-      erscheinungsjahr: '',
+      erscheinungsdatum: '',
       songLink: ''
     }
   },
@@ -73,7 +61,7 @@ export default {
       var raw = JSON.stringify({
         titel: this.titel,
         autor: this.autor,
-        erscheinungsjahr: this.erscheinungsjahr,
+        erscheinungsdatum: this.erscheinungsdatum,
         songLink: this.songLink
       })
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'
