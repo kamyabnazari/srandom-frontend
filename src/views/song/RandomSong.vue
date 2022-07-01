@@ -1,16 +1,30 @@
 <template>
-  <h1 class="page-header">Your <span style="color: var(--primary-color)">song</span></h1>
+  <h1 class="page-header">Your <span style="color: var(--primary-color)">song</span>!</h1>
 
   <div class="container-fluid">
     <div class="row row-cols-auto gap-5 d-flex justify-content-center px-5">
       <div class="col-sm">
         <h1 class="list-header" style="color: var(--warning-color)">Favorites</h1>
         <div class="list-group align-items-center">
-          <button type="button" class="shadow-sm list-group-item list-group-item-action"> Song Name</button>
+          <a href="#" class="shadow-sm list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between align-items-center">
+              <h5 style="font-weight: bold;">You Don't Know</h5>
+              <h6>Eminem, 50 Cent, Ca$his, Lloyd Banks</h6>
+              <font-awesome-icon icon="fa-solid fa-eye" style="color: var(--primary-color)"/>
+            </div>
+          </a>
         </div>
       </div>
       <div class="col-sm random-song">
-        <div v-for="song in songs" :key="song.id">
+        <div class="mb-4">
+          <button class="button-util button-heart shadow m-2">
+            <font-awesome-icon icon="fa-solid fa-heart" size="2x"/>
+          </button>
+          <button class="button-util button-renew shadow m-2">
+            <font-awesome-icon icon="fa-solid fa-rotate-right" size="2x"/>
+          </button>
+        </div>
+        <div class="col-sm" v-for="song in songs" :key="song.id">
           <song-card :song="song"></song-card>
         </div>
       </div>
@@ -87,4 +101,20 @@ export default {
 .list-group {
   min-width: 300px;
 }
+
+.button-util {
+  border-radius: 50%;
+  border: 0;
+  background-color: var(--element-color);
+  padding: 10px;
+}
+
+.button-heart {
+  color: var(--warning-color);
+}
+
+.button-renew {
+  color: var(--important-color);
+}
+
 </style>

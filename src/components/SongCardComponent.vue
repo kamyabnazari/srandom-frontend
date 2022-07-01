@@ -1,6 +1,7 @@
 <template>
   <div class="card shadow">
     <div class="card-body text-center">
+      <span class="badge badge-secondary mb-0">Original</span> <span class="badge badge-primary mb-0">Song</span>
       <div class="d-flex justify-content-center align-items-center card-img-box">
         <font-awesome-icon icon="fa-solid fa-music" class="card-img" size="5x" beat-fade style="--fa-animation-duration: 3s; --fa-fade-opacity: 1.0;" />
       </div>
@@ -53,5 +54,13 @@ export default {
 
 .card-text {
   color: var(--secondary-color);
+}
+
+.badge-primary {
+  background-color: var(--primary-color);
+}
+
+.badge-secondary {
+  background-color: var(--important-color);
 }
 </style>

@@ -1,7 +1,6 @@
 <template>
-  <div class="not-found">
+  <div class="text-center">
     <h1>404</h1>
-    <h2>Ups, let us look somewhere else!</h2>
   </div>
 </template>
 
