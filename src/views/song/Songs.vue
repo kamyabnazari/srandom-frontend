@@ -1,5 +1,5 @@
 <template>
-  <h1 class="page-header">All <span style="color: var(--primary-color)">our</span> songs</h1>
+  <h1 class="page-header">All of <span style="color: var(--primary-color)">your</span> songs</h1>
   <div class="container-fluid">
     <song-card-list :songs="this.songs"></song-card-list>
     <song-create-form @created="addSong"></song-create-form>

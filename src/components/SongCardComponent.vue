@@ -1,11 +1,15 @@
 <template>
   <div class="card shadow">
     <div class="card-body text-center">
+      <button v-if="song.isOriginal==false" class="button-util m-2" @click="removeSong">
+        <font-awesome-icon icon="fa-solid fa-circle-xmark" size="3x"/>
+      </button>
       <span v-if="song.isOriginal==true" class="badge badge-secondary mb-0 mx-1">Original</span>
       <span v-if="song.isOriginal==false" class="badge badge-custom mb-0 mx-1">Custom</span>
       <span class="badge badge-primary mb-0 mx-1">Song</span>
       <div class="d-flex justify-content-center align-items-center card-img-box">
-        <font-awesome-icon icon="fa-solid fa-music" class="card-img" size="5x" beat-fade style="--fa-animation-duration: 3s; --fa-fade-opacity: 1.0;" />
+        <font-awesome-icon icon="fa-solid fa-music" class="card-img" size="5x" beat-fade
+                           style="--fa-animation-duration: 3s; --fa-fade-opacity: 1.0;"/>
       </div>
       <h5 class="card-title mb-3 mt-3">{{ song.title }}</h5>
       <h6 class="card-title mb-3">{{ song.author }}</h6>
@@ -22,6 +26,23 @@ export default {
     song: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    removeSong () {
+      var myHeaders = new Headers()
+      myHeaders.append('Content-Type', 'application/json')
+
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/' + this.song.id
+      var requestOptions = {
+        method: 'DELETE',
+        headers: myHeaders,
+        body: null,
+        redirect: 'follow'
+      }
+
+      fetch(endpoint, requestOptions)
+        .catch(error => console.log('error', error))
     }
   }
 }
@@ -74,5 +95,15 @@ export default {
 
 a:hover {
   color: var(--element-color);
+}
+
+.button-util {
+  position: absolute;
+  left: -25px;
+  top: -25px;
+  border-radius: 50%;
+  border: 0;
+  background-color: transparent;
+  color: var(--warning-color);
 }
 </style>
