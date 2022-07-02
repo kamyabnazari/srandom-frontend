@@ -18,17 +18,17 @@
             <div class="mb-3">
               <label for="title" class="form-label">Title</label>
               <input type="text" minlength="1" maxlength="40" class="form-control" id="title" placeholder="song name"
-                     v-model="titel" required>
+                     v-model="title" required>
             </div>
             <div class="mb-3">
               <label for="author" class="form-label">Author</label>
               <input type="text" minlength="1" maxlength="40" class="form-control" id="author"
-                     placeholder="authors name" v-model="autor" required>
+                     placeholder="authors name" v-model="author" required>
             </div>
             <div class="mb-3">
               <label for="releaseYear" class="form-label">Release year</label>
               <input type="number" min="1800" max="9999" class="form-control" id="releaseYear" placeholder="2022"
-                     v-model="erscheinungsdatum" required>
+                     v-model="releaseYear" required>
             </div>
             <div class="mb-3">
               <label for="songLink" class="form-label">Song Link</label>
@@ -51,9 +51,9 @@ export default {
   name: 'SongCreateForm',
   data () {
     return {
-      titel: '',
-      autor: '',
-      erscheinungsdatum: '',
+      title: '',
+      author: '',
+      releaseYear: '',
       songLink: ''
     }
   },
@@ -63,9 +63,9 @@ export default {
       myHeaders.append('Content-Type', 'application/json')
 
       var raw = JSON.stringify({
-        titel: this.titel,
-        autor: this.autor,
-        erscheinungsdatum: this.erscheinungsdatum,
+        title: this.title,
+        author: this.author,
+        releaseYear: this.releaseYear,
         songLink: this.songLink
       })
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'

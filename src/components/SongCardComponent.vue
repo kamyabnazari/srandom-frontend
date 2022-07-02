@@ -5,9 +5,9 @@
       <div class="d-flex justify-content-center align-items-center card-img-box">
         <font-awesome-icon icon="fa-solid fa-music" class="card-img" size="5x" beat-fade style="--fa-animation-duration: 3s; --fa-fade-opacity: 1.0;" />
       </div>
-      <h5 class="card-title mb-3 mt-3">{{ song.titel }}</h5>
-      <h6 class="card-title mb-3">{{ song.autor }}</h6>
-      <p class="card-text mb-3">{{ song.erscheinungsdatum }}</p>
+      <h5 class="card-title mb-3 mt-3">{{ song.title }}</h5>
+      <h6 class="card-title mb-3">{{ song.author }}</h6>
+      <p class="card-text mb-3">{{ song.releaseYear }}</p>
       <a v-bind:href="song.songLink" class="custom-button button-yellow btn-lg w-50 mb-3">Listen</a>
     </div>
   </div>
