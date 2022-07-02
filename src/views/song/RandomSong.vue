@@ -5,14 +5,8 @@
     <div class="row row-cols-auto gap-5 d-flex justify-content-center px-5">
       <div class="col-sm">
         <h1 class="list-header" style="color: var(--warning-color)">Favorites</h1>
-        <div class="list-group align-items-center">
-          <a href="#" class="shadow-sm list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between align-items-center">
-              <h5 style="font-weight: bold;">You Don't Know</h5>
-              <h6>Eminem, 50 Cent, Ca$his, Lloyd Banks</h6>
-              <font-awesome-icon icon="fa-solid fa-eye" style="color: var(--primary-color)"/>
-            </div>
-          </a>
+        <div class="list-group align-items-center" v-for="favorite in favorites" :key="favorite.id">
+          <FavoriteListItemComponent :favorite="favorite" />
         </div>
       </div>
       <div class="col-sm random-song">
@@ -38,10 +32,12 @@
 <script>
 import SongCard from '@/components/SongCardComponent'
 import GuideCardComponent from '@/components/GuideCardComponent'
+import FavoriteListItemComponent from '@/components/FavoriteListItemComponent'
 
 export default {
   name: 'RandomSong',
   components: {
+    FavoriteListItemComponent,
     GuideCardComponent,
     SongCard
   },
@@ -53,21 +49,51 @@ export default {
   },
   data () {
     return {
-      songs: []
+      songs: [],
+      favorites: []
     }
   },
   mounted () {
-    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
+    this.fetchRandomSong()
+    this.fetchFavorites()
+  },
+  methods: {
+    fetchRandomSong () {
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'
+      const requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      }
+      fetch(endpoint + '/6', requestOptions)
+        .then(response => response.json())
+        .then(result => this.songs.push(result))
+        .catch(error => console.log('error', error))
+    },
+    /*
+    fetchSongById (songId) {
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/' + songId
+      const requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      }
+      fetch(endpoint, requestOptions)
+        .then(response => response.json())
+        .then(result => this.songs.push(result))
+        .catch(error => console.log('error', error))
+    },
+    */
+    fetchFavorites () {
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/favorites'
+      const requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      }
+      fetch(endpoint, requestOptions)
+        .then(response => response.json())
+        .then(result => this.favorites.push(result))
+        .catch(error => console.log('error', error))
     }
-    fetch(endpoint + '/6', requestOptions)
-      .then(response => response.json())
-      .then(result => this.songs.push(result))
-      .catch(error => console.log('error', error))
   }
-
 }
 </script>
 
@@ -78,11 +104,6 @@ export default {
 
 .random-song {
   text-align: -webkit-center;
-}
-
-.info-card {
-  max-width: 600px;
-  margin: 10px;
 }
 
 .list-group {

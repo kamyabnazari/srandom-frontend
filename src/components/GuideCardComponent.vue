@@ -37,5 +37,8 @@ export default {
 </script>
 
 <style scoped>
-
+.info-card {
+  max-width: 600px;
+  margin: 10px;
+}
 </style>
