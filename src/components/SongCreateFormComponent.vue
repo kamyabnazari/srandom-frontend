@@ -66,7 +66,8 @@ export default {
         title: this.title,
         author: this.author,
         releaseYear: this.releaseYear,
-        songLink: this.songLink
+        songLink: this.songLink,
+        isOriginal: false
       })
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'
       var requestOptions = {
