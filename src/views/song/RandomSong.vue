@@ -5,9 +5,9 @@
     <div class="row row-cols-auto gap-5 d-flex justify-content-center px-5">
       <div class="col-sm">
         <h1 class="list-header" style="color: var(--warning-color)">Favorites</h1>
-        <div class="list-group align-items-center" v-for="favorite in favorites" :key="favorite.id">
+        <ul class="list-group align-items-center" v-for="favorite in favorites" :key="favorite.id">
           <FavoriteListItemComponent :favorite="favorite" />
-        </div>
+        </ul>
       </div>
       <div class="col-sm random-song">
         <div class="mb-4">
@@ -41,12 +41,6 @@ export default {
     GuideCardComponent,
     SongCard
   },
-  props: {
-    song: {
-      type: Array,
-      required: true
-    }
-  },
   data () {
     return {
       songs: [],
@@ -69,7 +63,19 @@ export default {
         .then(result => this.songs.push(result))
         .catch(error => console.log('error', error))
     },
-    /*
+    fetchFavorites () {
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/favorites'
+      const requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      }
+      fetch(endpoint, requestOptions)
+        .then(response => response.json())
+        .then(result => result.forEach(favorite => {
+          this.favorites.push(favorite)
+        }))
+        .catch(error => console.log('error', error))
+    },
     fetchSongById (songId) {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/' + songId
       const requestOptions = {
@@ -79,18 +85,6 @@ export default {
       fetch(endpoint, requestOptions)
         .then(response => response.json())
         .then(result => this.songs.push(result))
-        .catch(error => console.log('error', error))
-    },
-    */
-    fetchFavorites () {
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/favorites'
-      const requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-      }
-      fetch(endpoint, requestOptions)
-        .then(response => response.json())
-        .then(result => this.favorites.push(result))
         .catch(error => console.log('error', error))
     }
   }
