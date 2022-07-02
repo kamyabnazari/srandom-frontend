@@ -14,22 +14,6 @@
 import SongCreateForm from '@/components/SongCreateFormComponent'
 import SongCard from '@/components/SongCardComponent'
 
-class Song {
-  title
-  author
-  releaseYear
-  songLink
-  isOriginal
-
-  constructor (title, author, releaseYear, songLink, isOriginal) {
-    this.title = title
-    this.author = author
-    this.releaseYear = releaseYear
-    this.songLink = songLink
-    this.isOriginal = isOriginal
-  }
-}
-
 export default {
   name: 'AllSongs',
   components: {
@@ -38,8 +22,7 @@ export default {
   },
   data () {
     return {
-      songs: [],
-      song: new Song()
+      songs: []
     }
   },
   mounted () {
@@ -68,7 +51,8 @@ export default {
         author: author,
         releaseYear: releaseYear,
         songLink: songLink,
-        isOriginal: false
+        isOriginal: false,
+        isFavorite: false
       })
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'
       var requestOptions = {
@@ -81,8 +65,7 @@ export default {
       fetch(endpoint, requestOptions)
         .catch(error => console.log('error', error))
 
-      var addingSong = new Song(title, author, releaseYear, songLink, false)
-      this.songs.push(addingSong)
+      this.songs.push({ title: title, author: author, releaseYear: releaseYear, songLink: songLink, isOriginal: false, isFavorite: false })
     },
     removeSong (songId) {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/' + songId

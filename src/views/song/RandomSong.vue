@@ -5,14 +5,17 @@
     <div class="row row-cols-auto gap-5 d-flex justify-content-center px-5">
       <div class="col-sm">
         <h1 class="list-header" style="color: var(--warning-color)">Favorites</h1>
-        <ul class="list-group align-items-center" v-for="favorite in favorites" :key="favorite.id">
-          <FavoriteListItemComponent :favorite="favorite" />
+        <ul class="list-group align-items-center" v-for="song in favoriteSongs" :key="song.id">
+          <FavoriteListItemComponent :song="song"/>
         </ul>
       </div>
       <div class="col-sm random-song">
         <div class="mb-4">
-          <button class="button-util button-heart shadow m-2" @click="addFavorite(getSongId())">
+          <button class="button-util button-heart shadow m-2" @click="setFavoriteState(songs[0].id, true)">
             <font-awesome-icon icon="fa-solid fa-heart" size="2x"/>
+          </button>
+          <button class="button-util button-heart shadow m-2" @click="setFavoriteState(songs[0].id, false)">
+            <font-awesome-icon icon="fa-solid fa-heart-crack" size="2x"/>
           </button>
           <button class="button-util button-renew shadow m-2">
             <font-awesome-icon icon="fa-solid fa-rotate-right" size="2x"/>
@@ -34,22 +37,6 @@ import SongCard from '@/components/SongCardComponent'
 import GuideCardComponent from '@/components/GuideCardComponent'
 import FavoriteListItemComponent from '@/components/FavoriteListItemComponent'
 
-class Song {
-  title
-  author
-  releaseYear
-  songLink
-  isOriginal
-
-  constructor (title, author, releaseYear, songLink, isOriginal) {
-    this.title = title
-    this.author = author
-    this.releaseYear = releaseYear
-    this.songLink = songLink
-    this.isOriginal = isOriginal
-  }
-}
-
 export default {
   name: 'RandomSong',
   components: {
@@ -59,20 +46,15 @@ export default {
   },
   data () {
     return {
-      song: Object,
       songs: [],
-      favorites: []
+      favoriteSongs: []
     }
   },
   mounted () {
     this.fetchRandomSong()
-    this.fetchFavorites()
+    this.fetchFavoriteSongs()
   },
   methods: {
-    getSongId () {
-      this.song = this.songs[0]
-      return this.song.id
-    },
     // TODO Create the correct Random Song in backend
     fetchRandomSong () {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'
@@ -85,42 +67,29 @@ export default {
         .then(result => this.songs.push(result))
         .catch(error => console.log('error', error))
     },
-    fetchFavorites () {
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/favorites'
+    fetchFavoriteSongs () {
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/favorites'
       const requestOptions = {
         method: 'GET',
         redirect: 'follow'
       }
       fetch(endpoint, requestOptions)
         .then(response => response.json())
-        .then(result => result.forEach(favorite => {
-          this.fetchSongById(favorite.songId)
+        .then(result => result.forEach(song => {
+          this.favoriteSongs.push(song)
         }))
         .catch(error => console.log('error', error))
-
-      console.log(this.favorites)
     },
-    fetchSongById (songId) {
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/' + songId
-      const requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-      }
-      fetch(endpoint, requestOptions)
-        .then(response => response.json())
-        .then(result => this.favorites.push(result))
-        .catch(error => console.log('error', error))
-    },
-    addFavorite: function (songId) {
+    setFavoriteState: function (songId, state) {
       var myHeaders = new Headers()
       myHeaders.append('Content-Type', 'application/json')
 
       var raw = JSON.stringify({
-        songId: songId
+        isFavorite: state
       })
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/favorites'
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/favorites/' + songId
       var requestOptions = {
-        method: 'POST',
+        method: 'PUT',
         headers: myHeaders,
         body: raw,
         redirect: 'follow'
@@ -129,21 +98,19 @@ export default {
       fetch(endpoint, requestOptions)
         .catch(error => console.log('error', error))
 
-      var addingSong = new Song(this.fetchSongById(songId))
-      this.favorites.push(addingSong)
-    },
-    removeFavorite (songId) {
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/favorites/' + songId
-      const requestOptions = {
-        method: 'DELETE',
-        body: null,
-        redirect: 'follow'
+      if (state && !this.favoriteSongs.some(song => song.id === songId)) {
+        this.favoriteSongs.push({
+          id: songId,
+          title: this.songs[0].title,
+          author: this.songs[0].author,
+          releaseYear: this.songs[0].releaseYear,
+          songLink: this.songs[0].songLink,
+          isOriginal: this.songs[0].isOriginal,
+          isFavorite: true
+        })
+      } else if (!state && this.favoriteSongs.some(song => song.id === songId)) {
+        this.favoriteSongs.splice(this.favoriteSongs.indexOf(songId), 1)
       }
-
-      fetch(endpoint, requestOptions)
-        .catch(error => console.log('error', error))
-
-      this.favorites.splice(this.favorites.indexOf(songId), 1)
     }
   }
 }
