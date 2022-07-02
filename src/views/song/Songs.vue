@@ -3,10 +3,10 @@
   <div class="container-fluid">
     <div class="row row-cols-auto gap-5 justify-content-center mb-5">
       <div class="col" v-for="song in songs" :key="song.id">
-        <song-card :song="song" @removeSongEvent="removeSong"></song-card>
+        <song-card :song="song" @removeSongEvent="removeSong" />
       </div>
     </div>
-    <song-create-form @addSongEvent="addSong"></song-create-form>
+    <song-create-form @addSongEvent="addSong" />
   </div>
 </template>
 

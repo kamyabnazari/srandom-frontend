@@ -61,6 +61,10 @@ nav {
   color: var(--primary-color);
 }
 
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .nav-link.active {
+  color: var(--primary-color);
+}
+
 h1 {
   font-weight: 600;
   margin-bottom: 0;
