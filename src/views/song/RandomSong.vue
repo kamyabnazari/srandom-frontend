@@ -11,7 +11,7 @@
       </div>
       <div class="col-sm random-song">
         <div class="mb-4">
-          <button class="button-util button-heart shadow m-2">
+          <button class="button-util button-heart shadow m-2" @click="addFavorite(getSongId())">
             <font-awesome-icon icon="fa-solid fa-heart" size="2x"/>
           </button>
           <button class="button-util button-renew shadow m-2">
@@ -34,6 +34,22 @@ import SongCard from '@/components/SongCardComponent'
 import GuideCardComponent from '@/components/GuideCardComponent'
 import FavoriteListItemComponent from '@/components/FavoriteListItemComponent'
 
+class Song {
+  title
+  author
+  releaseYear
+  songLink
+  isOriginal
+
+  constructor (title, author, releaseYear, songLink, isOriginal) {
+    this.title = title
+    this.author = author
+    this.releaseYear = releaseYear
+    this.songLink = songLink
+    this.isOriginal = isOriginal
+  }
+}
+
 export default {
   name: 'RandomSong',
   components: {
@@ -43,6 +59,7 @@ export default {
   },
   data () {
     return {
+      song: Object,
       songs: [],
       favorites: []
     }
@@ -52,6 +69,10 @@ export default {
     this.fetchFavorites()
   },
   methods: {
+    getSongId () {
+      this.song = this.songs[0]
+      return this.song.id
+    },
     // TODO Create the correct Random Song in backend
     fetchRandomSong () {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'
@@ -89,6 +110,40 @@ export default {
         .then(response => response.json())
         .then(result => this.favorites.push(result))
         .catch(error => console.log('error', error))
+    },
+    addFavorite: function (songId) {
+      var myHeaders = new Headers()
+      myHeaders.append('Content-Type', 'application/json')
+
+      var raw = JSON.stringify({
+        songId: songId
+      })
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/favorites'
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      }
+
+      fetch(endpoint, requestOptions)
+        .catch(error => console.log('error', error))
+
+      var addingSong = new Song(this.fetchSongById(songId))
+      this.favorites.push(addingSong)
+    },
+    removeFavorite (songId) {
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/favorites/' + songId
+      const requestOptions = {
+        method: 'DELETE',
+        body: null,
+        redirect: 'follow'
+      }
+
+      fetch(endpoint, requestOptions)
+        .catch(error => console.log('error', error))
+
+      this.favorites.splice(this.favorites.indexOf(songId), 1)
     }
   }
 }
