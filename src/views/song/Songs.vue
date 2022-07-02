@@ -48,11 +48,11 @@ export default {
   methods: {
     fetchSongs: function () {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'
-      const requestOption = {
+      const requestOptions = {
         method: 'GET',
         redirect: 'follow'
       }
-      fetch(endpoint, requestOption)
+      fetch(endpoint, requestOptions)
         .then(response => response.json())
         .then(result => result.forEach(song => {
           this.songs.push(song)
