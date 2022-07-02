@@ -11,13 +11,13 @@
       </div>
       <div class="col-sm random-song">
         <div class="mb-4">
-          <button class="button-util button-heart shadow m-2" @click="setFavoriteState(songs[0].id, true)">
+          <button v-if="song.isFavorite===false" class="button-util button-heart shadow m-2" @click="setFavoriteState(song.id, true)">
             <font-awesome-icon icon="fa-solid fa-heart" size="2x"/>
           </button>
-          <button class="button-util button-heart shadow m-2" @click="setFavoriteState(songs[0].id, false)">
+          <button v-if="song.isFavorite===true" class="button-util button-heart shadow m-2" @click="setFavoriteState(song.id, false)">
             <font-awesome-icon icon="fa-solid fa-heart-crack" size="2x"/>
           </button>
-          <button class="button-util button-renew shadow m-2">
+          <button class="button-util button-renew shadow m-2" @click="retryRandomSong">
             <font-awesome-icon icon="fa-solid fa-rotate-right" size="2x"/>
           </button>
         </div>
@@ -47,7 +47,9 @@ export default {
   data () {
     return {
       songs: [],
-      favoriteSongs: []
+      favoriteSongs: [],
+      song: Object,
+      required: true
     }
   },
   mounted () {
@@ -55,47 +57,52 @@ export default {
     this.fetchFavoriteSongs()
   },
   methods: {
-    // TODO Create the correct Random Song in backend
-    fetchRandomSong () {
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'
+    retryRandomSong () {
+      this.songs.pop()
+      this.fetchRandomSong()
+    },
+    async fetchRandomSong () {
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/random'
       const requestOptions = {
         method: 'GET',
         redirect: 'follow'
       }
-      fetch(endpoint + '/6', requestOptions)
+      await fetch(endpoint, requestOptions)
         .then(response => response.json())
         .then(result => this.songs.push(result))
         .catch(error => console.log('error', error))
+
+      this.song = this.songs[0]
     },
-    fetchFavoriteSongs () {
+    async fetchFavoriteSongs () {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/favorites'
       const requestOptions = {
         method: 'GET',
         redirect: 'follow'
       }
-      fetch(endpoint, requestOptions)
+      await fetch(endpoint, requestOptions)
         .then(response => response.json())
         .then(result => result.forEach(song => {
           this.favoriteSongs.push(song)
         }))
         .catch(error => console.log('error', error))
     },
-    setFavoriteState: function (songId, state) {
-      var myHeaders = new Headers()
+    async setFavoriteState (songId, state) {
+      const myHeaders = new Headers()
       myHeaders.append('Content-Type', 'application/json')
 
-      var raw = JSON.stringify({
+      const raw = JSON.stringify({
         isFavorite: state
       })
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/favorites/' + songId
-      var requestOptions = {
+      const requestOptions = {
         method: 'PUT',
         headers: myHeaders,
         body: raw,
         redirect: 'follow'
       }
 
-      fetch(endpoint, requestOptions)
+      await fetch(endpoint, requestOptions)
         .catch(error => console.log('error', error))
 
       if (state && !this.favoriteSongs.some(song => song.id === songId)) {

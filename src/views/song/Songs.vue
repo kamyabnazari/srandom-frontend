@@ -22,31 +22,32 @@ export default {
   },
   data () {
     return {
-      songs: []
+      songs: [],
+      required: true
     }
   },
   mounted () {
     this.fetchSongs()
   },
   methods: {
-    fetchSongs: function () {
+    async fetchSongs () {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'
       const requestOptions = {
         method: 'GET',
         redirect: 'follow'
       }
-      fetch(endpoint, requestOptions)
+      await fetch(endpoint, requestOptions)
         .then(response => response.json())
         .then(result => result.forEach(song => {
           this.songs.push(song)
         }))
         .catch(error => console.log('error', error))
     },
-    addSong: function (title, author, releaseYear, songLink) {
-      var myHeaders = new Headers()
+    async addSong (title, author, releaseYear, songLink) {
+      const myHeaders = new Headers()
       myHeaders.append('Content-Type', 'application/json')
 
-      var raw = JSON.stringify({
+      const raw = JSON.stringify({
         title: title,
         author: author,
         releaseYear: releaseYear,
@@ -55,19 +56,19 @@ export default {
         isFavorite: false
       })
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'
-      var requestOptions = {
+      const requestOptions = {
         method: 'POST',
         headers: myHeaders,
         body: raw,
         redirect: 'follow'
       }
 
-      fetch(endpoint, requestOptions)
+      await fetch(endpoint, requestOptions)
         .catch(error => console.log('error', error))
 
       this.songs.push({ title: title, author: author, releaseYear: releaseYear, songLink: songLink, isOriginal: false, isFavorite: false })
     },
-    removeSong (songId) {
+    async removeSong (songId) {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/' + songId
       const requestOptions = {
         method: 'DELETE',
@@ -75,7 +76,7 @@ export default {
         redirect: 'follow'
       }
 
-      fetch(endpoint, requestOptions)
+      await fetch(endpoint, requestOptions)
         .catch(error => console.log('error', error))
 
       this.songs.splice(this.songs.indexOf(songId), 1)
