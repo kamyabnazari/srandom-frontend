@@ -1,7 +1,7 @@
 <template>
   <div class="card shadow">
     <div class="card-body text-center">
-      <button v-if="song.isOriginal==false" class="button-util m-2" @click="removeSong">
+      <button v-if="song.isOriginal==false" class="button-util m-2" @click="removeSong" >
         <font-awesome-icon icon="fa-solid fa-circle-xmark" size="3x"/>
       </button>
       <span v-if="song.isOriginal==true" class="badge badge-secondary mb-0 mx-1">Original</span>
@@ -30,19 +30,7 @@ export default {
   },
   methods: {
     removeSong () {
-      var myHeaders = new Headers()
-      myHeaders.append('Content-Type', 'application/json')
-
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/' + this.song.id
-      var requestOptions = {
-        method: 'DELETE',
-        headers: myHeaders,
-        body: null,
-        redirect: 'follow'
-      }
-
-      fetch(endpoint, requestOptions)
-        .catch(error => console.log('error', error))
+      this.$emit('removeSongEvent', this.song.id)
     }
   }
 }

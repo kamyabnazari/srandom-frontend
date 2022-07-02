@@ -1,20 +1,19 @@
 <template>
-  <button class="btn sticky-button" data-bs-toggle="modal" data-bs-target="#exampleModal"
-          aria-controls="#exampleModal">
+  <button class="btn sticky-button" @click="showFormModal">
     <i class="bi songs">
       <font-awesome-icon icon="fa-solid fa-plus" class="card-img" size="2x"/>
     </i>
   </button>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">New Song</h5>
+          <h5 class="modal-title" id="formModalLabel">New Song</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form @submit="createSong">
+          <form @submit.stop.prevent="addSong">
             <div class="mb-3">
               <label for="title" class="form-label">Title</label>
               <input type="text" minlength="1" maxlength="40" class="form-control" id="title" placeholder="song name"
@@ -47,38 +46,28 @@
 </template>
 
 <script>
+import { Modal } from 'bootstrap'
+
 export default {
+
   name: 'SongCreateForm',
   data () {
     return {
       title: '',
       author: '',
       releaseYear: '',
-      songLink: ''
+      songLink: '',
+      formModal: null
     }
   },
   methods: {
-    createSong () {
-      var myHeaders = new Headers()
-      myHeaders.append('Content-Type', 'application/json')
-
-      var raw = JSON.stringify({
-        title: this.title,
-        author: this.author,
-        releaseYear: this.releaseYear,
-        songLink: this.songLink,
-        isOriginal: false
-      })
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'
-      var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-      }
-
-      fetch(endpoint, requestOptions)
-        .catch(error => console.log('error', error))
+    showFormModal () {
+      this.formModal = new Modal(document.getElementById('formModal'), {})
+      this.formModal.show()
+    },
+    addSong () {
+      this.formModal.hide()
+      this.$emit('addSongEvent', this.title, this.author, this.releaseYear, this.songLink)
     }
   }
 }
