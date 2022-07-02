@@ -84,8 +84,8 @@ export default {
       var addingSong = new Song(title, author, releaseYear, songLink, false)
       this.songs.push(addingSong)
     },
-    removeSong (id) {
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/' + id
+    removeSong (songId) {
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/' + songId
       const requestOptions = {
         method: 'DELETE',
         body: null,
@@ -95,7 +95,7 @@ export default {
       fetch(endpoint, requestOptions)
         .catch(error => console.log('error', error))
 
-      this.songs.splice(this.songs.indexOf(id), 1)
+      this.songs.splice(this.songs.indexOf(songId), 1)
     }
   }
 }

@@ -1,8 +1,8 @@
 <template>
   <a href="#" class="shadow-sm list-group-item list-group-item-action flex-column align-items-start mb-2">
     <div class="d-flex w-100 justify-content-between align-items-center">
-      <h5 style="font-weight: bold;">{{ favorite.id }}</h5>
-      <h6>{{ favorite.songId }}</h6>
+      <h5 style="font-weight: bold;">{{ favorite.title }}</h5>
+      <h6>{{ favorite.author }}</h6>
       <font-awesome-icon icon="fa-solid fa-eye" style="color: var(--primary-color)"/>
     </div>
   </a>

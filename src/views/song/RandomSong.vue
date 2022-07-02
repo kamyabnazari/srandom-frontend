@@ -52,6 +52,7 @@ export default {
     this.fetchFavorites()
   },
   methods: {
+    // TODO Create the correct Random Song in backend
     fetchRandomSong () {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs'
       const requestOptions = {
@@ -72,9 +73,11 @@ export default {
       fetch(endpoint, requestOptions)
         .then(response => response.json())
         .then(result => result.forEach(favorite => {
-          this.favorites.push(favorite)
+          this.fetchSongById(favorite.songId)
         }))
         .catch(error => console.log('error', error))
+
+      console.log(this.favorites)
     },
     fetchSongById (songId) {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/' + songId
@@ -84,7 +87,7 @@ export default {
       }
       fetch(endpoint, requestOptions)
         .then(response => response.json())
-        .then(result => this.songs.push(result))
+        .then(result => this.favorites.push(result))
         .catch(error => console.log('error', error))
     }
   }
