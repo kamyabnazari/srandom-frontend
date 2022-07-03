@@ -20,10 +20,10 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faCirclePlay, faMusic, faEye, faHeart, faRotateRight, faPlus, faCircleXmark, faHeartCrack } from '@fortawesome/free-solid-svg-icons'
+import { faCirclePlay, faMusic, faEye, faHeart, faRotateRight, faPlus, faCircleXmark, faHeartCrack, faFan } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faCirclePlay, faMusic, faEye, faHeart, faRotateRight, faPlus, faCircleXmark, faHeartCrack)
+library.add(faCirclePlay, faMusic, faEye, faHeart, faRotateRight, faPlus, faCircleXmark, faHeartCrack, faFan)
 
 const app = createApp(App)
 app.use(router)
