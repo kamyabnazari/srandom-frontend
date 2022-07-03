@@ -5,7 +5,7 @@ describe('NavarComponent.vue Test', () => {
   it('check for correct component name', () => {
     // render the component
     const wrapper = shallowMount(Navbar)
-    // check the name of the component
+    // check the name of  the component
     expect(wrapper.vm.$options.name).toMatch('NavbarComponent')
   })
 })
