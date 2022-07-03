@@ -118,7 +118,7 @@ export default {
         this.$notify({
           type: 'success',
           title: 'Notification',
-          text: 'You have removed the song from your favorites!'
+          text: 'You have added this song to your favorites!'
         })
       } else if (!state && this.favoriteSongs.some(song => song.id === songId)) {
         this.favoriteSongs.splice(this.favoriteSongs.findIndex((song) => song.id === songId), 1)
