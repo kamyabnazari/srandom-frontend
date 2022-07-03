@@ -66,3 +66,19 @@
   height: 100vh;
   background-color: var(--background-color);
 }
+
+.custom-notification {
+  margin: 75px 25px 25px 0px;
+  padding: 10px;
+  font-size: 12px;
+
+  &.success {
+    background-color: var(--confirmation-color);
+    border-left-color: #42a85f;
+  }
+
+  &.error {
+    background-color: var(--warning-color);
+    border-left-color: #b82e24;
+  }
+}

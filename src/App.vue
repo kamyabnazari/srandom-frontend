@@ -1,5 +1,6 @@
 <template>
   <navbar-component/>
+  <notifications class="custom-notification" position="bottom center" width="400px"/>
   <router-view/>
 </template>
 

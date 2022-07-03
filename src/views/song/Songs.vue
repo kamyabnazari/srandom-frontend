@@ -67,6 +67,11 @@ export default {
         .catch(error => console.log('error', error))
 
       this.songs.push({ title: title, author: author, releaseYear: releaseYear, songLink: songLink, isOriginal: false, isFavorite: false })
+      this.$notify({
+        type: 'success',
+        title: 'Notification',
+        text: 'You have added a new song to your library!'
+      })
     },
     async removeSong (songId) {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/' + songId
@@ -78,8 +83,12 @@ export default {
 
       await fetch(endpoint, requestOptions)
         .catch(error => console.log('error', error))
-
       this.songs.splice(this.songs.indexOf(songId), 1)
+      this.$notify({
+        type: 'error',
+        title: 'Notification',
+        text: 'You have removed the song from your library!'
+      })
     }
   }
 }

@@ -10,6 +10,9 @@ import './styles/main.scss'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap'
 
+/* Other Packages */
+import notifications from '@kyvg/vue3-notification'
+
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -24,5 +27,6 @@ library.add(faCirclePlay, faMusic, faEye, faHeart, faRotateRight, faPlus, faCirc
 
 const app = createApp(App)
 app.use(router)
+app.use(notifications)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.mount('#app')

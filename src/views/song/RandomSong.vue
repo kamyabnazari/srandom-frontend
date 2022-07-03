@@ -115,8 +115,18 @@ export default {
           isOriginal: this.songs[0].isOriginal,
           isFavorite: true
         })
+        this.$notify({
+          type: 'success',
+          title: 'Notification',
+          text: 'You have removed the song from your favorites!'
+        })
       } else if (!state && this.favoriteSongs.some(song => song.id === songId)) {
         this.favoriteSongs.splice(this.favoriteSongs.indexOf(songId), 1)
+        this.$notify({
+          type: 'error',
+          title: 'Notification',
+          text: 'You have removed the song from your favorites!'
+        })
       }
     }
   }
