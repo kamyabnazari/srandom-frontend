@@ -82,3 +82,19 @@
     border-left-color: #b82e24;
   }
 }
+
+.button-util {
+  border-radius: 50%;
+  border: 0;
+  background-color: var(--element-color);
+  padding: 10px;
+}
+
+.button-heart {
+  color: var(--warning-color);
+}
+
+.button-renew {
+  color: var(--important-color);
+}
+

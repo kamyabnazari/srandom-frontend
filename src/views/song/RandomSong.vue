@@ -11,14 +11,8 @@
       </div>
       <div class="col-sm random-song">
         <div class="mb-4">
-          <button v-if="this.isFavorite===false" class="button-util button-heart shadow m-2"
-                  @click="setFavoriteState(songs[0].id, true)">
-            <font-awesome-icon icon="fa-solid fa-heart" size="2x"/>
-          </button>
-          <button v-if="this.isFavorite===true" class="button-util button-heart shadow m-2"
-                  @click="setFavoriteState(songs[0].id, false)">
-            <font-awesome-icon icon="fa-solid fa-heart-crack" size="2x"/>
-          </button>
+          <heart-button-component v-for="song in songs" :key="song.id" :song="song"
+                                  @setFavoriteStateEvent="setFavoriteState"/>
           <button class="button-util button-renew shadow m-2" @click="retryRandomSong">
             <font-awesome-icon icon="fa-solid fa-rotate-right" size="2x"/>
           </button>
@@ -38,11 +32,13 @@
 import SongCard from '@/components/SongCardComponent'
 import GuideCardComponent from '@/components/GuideCardComponent'
 import FavoriteListItemComponent from '@/components/FavoriteListItemComponent'
+import HeartButtonComponent from '@/components/HeartButtonComponent'
 
 export default {
   name: 'RandomSong',
-  emits: ['showFavoriteSongEvent'],
+  emits: ['showFavoriteSongEvent', 'setFavoriteStateEvent'],
   components: {
+    HeartButtonComponent,
     FavoriteListItemComponent,
     GuideCardComponent,
     SongCard
@@ -51,7 +47,6 @@ export default {
     return {
       songs: [],
       favoriteSongs: [],
-      isFavorite: false,
       required: true
     }
   },
@@ -74,8 +69,6 @@ export default {
         .then(response => response.json())
         .then(result => this.songs.push(result))
         .catch(error => console.log('error', error))
-
-      this.isFavorite = this.songs[0].isFavorite
     },
     async fetchFavoriteSongs () {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/favorites'
@@ -121,6 +114,7 @@ export default {
           isOriginal: this.songs[0].isOriginal,
           isFavorite: true
         })
+        this.songs[0].isFavorite = true
         this.$notify({
           type: 'success',
           title: 'Notification',
@@ -128,6 +122,7 @@ export default {
         })
       } else if (!state && this.favoriteSongs.some(song => song.id === songId)) {
         this.favoriteSongs.splice(this.favoriteSongs.indexOf(songId), 1)
+        this.songs[0].isFavorite = false
         this.$notify({
           type: 'error',
           title: 'Notification',
@@ -150,21 +145,6 @@ export default {
 
 .list-group {
   min-width: 300px;
-}
-
-.button-util {
-  border-radius: 50%;
-  border: 0;
-  background-color: var(--element-color);
-  padding: 10px;
-}
-
-.button-heart {
-  color: var(--warning-color);
-}
-
-.button-renew {
-  color: var(--important-color);
 }
 
 </style>
