@@ -3,10 +3,10 @@
   <div class="container-fluid">
     <div class="row row-cols-auto gap-5 justify-content-center mb-5">
       <div class="col" v-for="song in songs" :key="song.id">
-        <song-card :song="song" @removeSongEvent="removeSong" />
+        <song-card :song="song" :remove-button-available="true" @removeSongEvent="removeSong"/>
       </div>
     </div>
-    <song-create-form @addSongEvent="addSong" />
+    <song-create-form @addSongEvent="addSong"/>
   </div>
 </template>
 
@@ -16,6 +16,7 @@ import SongCard from '@/components/SongCardComponent'
 
 export default {
   name: 'AllSongs',
+  emits: ['removeSongEvent', 'addSongEvent'],
   components: {
     SongCreateForm,
     SongCard
@@ -66,7 +67,14 @@ export default {
       await fetch(endpoint, requestOptions)
         .catch(error => console.log('error', error))
 
-      this.songs.push({ title: title, author: author, releaseYear: releaseYear, songLink: songLink, isOriginal: false, isFavorite: false })
+      this.songs.push({
+        title: title,
+        author: author,
+        releaseYear: releaseYear,
+        songLink: songLink,
+        isOriginal: false,
+        isFavorite: false
+      })
       this.$notify({
         type: 'success',
         title: 'Notification',
@@ -83,12 +91,15 @@ export default {
 
       await fetch(endpoint, requestOptions)
         .catch(error => console.log('error', error))
-      this.songs.splice(this.songs.indexOf(songId), 1)
-      this.$notify({
-        type: 'error',
-        title: 'Notification',
-        text: 'You have removed the song from your library!'
-      })
+
+      if (this.songs.some(song => song.id === songId)) {
+        this.songs.splice(this.songs.indexOf(songId), 1)
+        this.$notify({
+          type: 'error',
+          title: 'Notification',
+          text: 'You have removed the song from your library!'
+        })
+      }
     }
   }
 }

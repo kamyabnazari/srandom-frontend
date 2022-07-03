@@ -6,15 +6,17 @@
       <div class="col-sm">
         <h1 class="list-header" style="color: var(--warning-color)">Favorites</h1>
         <ul class="list-group align-items-center" v-for="song in favoriteSongs" :key="song.id">
-          <FavoriteListItemComponent :song="song"/>
+          <FavoriteListItemComponent :song="song" @showFavoriteSongEvent="showFavoriteSong"/>
         </ul>
       </div>
       <div class="col-sm random-song">
         <div class="mb-4">
-          <button v-if="song.isFavorite===false" class="button-util button-heart shadow m-2" @click="setFavoriteState(song.id, true)">
+          <button v-if="this.isFavorite===false" class="button-util button-heart shadow m-2"
+                  @click="setFavoriteState(songs[0].id, true)">
             <font-awesome-icon icon="fa-solid fa-heart" size="2x"/>
           </button>
-          <button v-if="song.isFavorite===true" class="button-util button-heart shadow m-2" @click="setFavoriteState(song.id, false)">
+          <button v-if="this.isFavorite===true" class="button-util button-heart shadow m-2"
+                  @click="setFavoriteState(songs[0].id, false)">
             <font-awesome-icon icon="fa-solid fa-heart-crack" size="2x"/>
           </button>
           <button class="button-util button-renew shadow m-2" @click="retryRandomSong">
@@ -22,7 +24,7 @@
           </button>
         </div>
         <div class="col-sm" v-for="song in songs" :key="song.id">
-          <song-card :song="song"></song-card>
+          <song-card :song="song" :remove-button-available="false"></song-card>
         </div>
       </div>
       <div class="col-sm">
@@ -39,6 +41,7 @@ import FavoriteListItemComponent from '@/components/FavoriteListItemComponent'
 
 export default {
   name: 'RandomSong',
+  emits: ['showFavoriteSongEvent'],
   components: {
     FavoriteListItemComponent,
     GuideCardComponent,
@@ -48,7 +51,7 @@ export default {
     return {
       songs: [],
       favoriteSongs: [],
-      song: Object,
+      isFavorite: false,
       required: true
     }
   },
@@ -72,7 +75,7 @@ export default {
         .then(result => this.songs.push(result))
         .catch(error => console.log('error', error))
 
-      this.song = this.songs[0]
+      this.isFavorite = this.songs[0].isFavorite
     },
     async fetchFavoriteSongs () {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/favorites'
@@ -86,6 +89,9 @@ export default {
           this.favoriteSongs.push(song)
         }))
         .catch(error => console.log('error', error))
+    },
+    showFavoriteSong (songId) {
+      console.log('I have been called!' + songId)
     },
     async setFavoriteState (songId, state) {
       const myHeaders = new Headers()

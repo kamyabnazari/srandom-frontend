@@ -1,7 +1,7 @@
 <template>
   <div class="card shadow">
     <div class="card-body text-center">
-      <button v-if="song.isOriginal===false" class="button-util m-2" @click="removeSong" >
+      <button v-if="song.isOriginal===false && this.removeButtonAvailable===true" class="button-util m-2" @click="removeSong" >
         <font-awesome-icon icon="fa-solid fa-circle-xmark" size="3x"/>
       </button>
       <span v-if="song.isOriginal===true" class="badge badge-primary mb-0 mx-1">Original</span>
@@ -26,6 +26,10 @@ export default {
     song: {
       type: Object,
       required: true
+    },
+    removeButtonAvailable: {
+      type: Boolean,
+      required: true
     }
   },
   methods: {
@@ -40,6 +44,8 @@ export default {
 .card {
   width: 300px;
   height: 500px;
+  max-width: 300px;
+  max-height: 500px;
   border-radius: 10px;
 }
 
@@ -63,6 +69,7 @@ export default {
 .card-title {
   color: var(--element-color);
   font-weight: bold;
+  font-size: 18px;
 }
 
 .card-text {
