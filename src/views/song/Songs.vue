@@ -93,7 +93,7 @@ export default {
         .catch(error => console.log('error', error))
 
       if (this.songs.some(song => song.id === songId)) {
-        this.songs.splice(this.songs.indexOf(songId), 1)
+        this.songs.splice(this.songs.findIndex((song) => song.id === songId), 1)
         this.$notify({
           type: 'error',
           title: 'Notification',
