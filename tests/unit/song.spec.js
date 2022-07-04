@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils'
 import Songs from '@/views/song/Songs'
 import SongCreateFormComponent from '@/components/SongCreateFormComponent.vue'
 import FavoriteListItemComponent from '@/components/FavoriteListItemComponent'
+import SpinnerComponent from '@/components/SpinnerComponent'
 
 describe('Testing Songs.vue', () => {
   it('should show page title', () => {
@@ -27,6 +28,15 @@ describe('Testing Songs.vue', () => {
 
     // then
     const createForm = wrapper.findComponent(SongCreateFormComponent)
+    expect(createForm.exists()).toBeTruthy()
+  })
+
+  it('should have spinner component', () => {
+    // when
+    const wrapper = mount(Songs)
+
+    // then
+    const createForm = wrapper.findComponent(SpinnerComponent)
     expect(createForm.exists()).toBeTruthy()
   })
 })
