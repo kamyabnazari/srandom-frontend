@@ -64,6 +64,8 @@ export default {
         redirect: 'follow'
       }
 
+      var responsePost = []
+
       if (this.songs.some((song) => song.title === title && song.author === author && song.releaseYear === releaseYear)) {
         this.$notify({
           type: 'error',
@@ -72,9 +74,12 @@ export default {
         })
       } else {
         await fetch(endpoint, requestOptions)
+          .then(response => response.json())
+          .then(result => responsePost.push(result))
           .catch(error => console.log('error', error))
 
         this.songs.push({
+          id: responsePost[0],
           title: title,
           author: author,
           releaseYear: releaseYear,
