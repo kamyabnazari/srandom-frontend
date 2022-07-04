@@ -1,10 +1,16 @@
 <template>
-  <button class="shadow-sm list-group-item list-group-item-action flex-column align-items-start mb-2"
+  <button class="shadow-sm list-group-item list-group-item-action mb-2"
           @click="showFavoriteSong">
-    <div class="d-flex w-100 justify-content-between align-items-center">
-      <h5 style="font-weight: bold;">{{ song.title }}</h5>
-      <h6>{{ song.author }}</h6>
-      <font-awesome-icon icon="fa-solid fa-eye" style="color: var(--primary-color)"/>
+    <div class="row w-100 align-items-center">
+      <div class="col">
+        <h5 style="font-weight: bold;">{{ song.title }}</h5>
+      </div>
+      <div class="col">
+        <h6 class="text-start">{{ song.author }}</h6>
+      </div>
+      <div class="col text-end">
+        <font-awesome-icon icon="fa-solid fa-eye" style="color: var(--primary-color)"/>
+      </div>
     </div>
   </button>
 </template>
