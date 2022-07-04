@@ -6,7 +6,6 @@ describe('Testing Navigation bar in App.vue', () => {
   it('should show page title', () => {
     // when
     const wrapper = mount(App)
-
     // then
     expect(wrapper.text()).toMatch('SrandomHomeSongsAbout UsRegister Login')
   })

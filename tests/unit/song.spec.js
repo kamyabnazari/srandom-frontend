@@ -34,7 +34,6 @@ describe('Testing Songs.vue', () => {
   it('should have spinner component', () => {
     // when
     const wrapper = mount(Songs)
-
     // then
     const createForm = wrapper.findComponent(SpinnerComponent)
     expect(createForm.exists()).toBeTruthy()
