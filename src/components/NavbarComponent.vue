@@ -8,15 +8,17 @@
     </button>
     <div class="collapse navbar-collapse" id="toggleMobileMenu">
       <ul class="navbar-nav mr-auto">
-        <router-link class="nav-link" to="/"><h6>Home</h6></router-link>
-        <router-link class="nav-link" to="/songs"><h6>Songs</h6></router-link>
-        <router-link class="nav-link" to="/about-us"><h6>About Us</h6></router-link>
+        <router-link class="nav-link" to="/"><h5>Home</h5></router-link>
+        <router-link class="nav-link" to="/songs"><h5>Songs</h5></router-link>
+        <router-link class="nav-link" to="/about-us"><h5>About Us</h5></router-link>
       </ul>
       <div class="btn-group ms-auto" role="group">
-        <button type="button" class="custom-button button-white btn-lg"
-                @click="$router.push({path: '/account-register'})"><h6>Register</h6></button>
-        <button type="button" class="custom-button button-yellow btn-lg"
-                @click="$router.push({path: '/account-login'})"><h6>Login</h6></button>
+        <button type="button" class="btn-lg custom-button button-white "
+                @click="$router.push({path: '/account-register'})">Register
+        </button>
+        <button type="button" class="btn-lg custom-button button-yellow "
+                @click="$router.push({path: '/account-login'})">Login
+        </button>
       </div>
     </div>
   </nav>
@@ -71,7 +73,7 @@ h1 {
   color: var(--element-color);
 }
 
-h6 {
+h5 {
   font-weight: bold;
   margin-bottom: 0;
 }

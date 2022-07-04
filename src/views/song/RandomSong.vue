@@ -5,12 +5,14 @@
     <spinner-component v-show="showSpinner"/>
     <div class="row row-cols-auto gap-5 d-flex justify-content-center px-5">
       <div class="col-sm" v-show="!showSpinner">
-        <h1 class="list-header" style="color: var(--warning-color)">Favorites</h1>
-        <ul class="list-group overflow-scroll">
-          <li v-for="song in favoriteSongs" :key="song.id">
-            <FavoriteListItemComponent :song="song" @showFavoriteSongEvent="showFavoriteSong"/>
-          </li>
-        </ul>
+        <div class="card mb-5 info-card p-5 shadow ">
+          <h5 class="list-header mb-5 text-center" style="color: var(--warning-color)">Favorites</h5>
+          <ul class="list-group overflow-scroll">
+            <li v-for="song in favoriteSongs" :key="song.id">
+              <FavoriteListItemComponent :song="song" @showFavoriteSongEvent="showFavoriteSong"/>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="col-sm random-song" v-show="!showSpinner">
         <div class="mb-4">
@@ -162,7 +164,7 @@ export default {
 }
 
 .list-group {
-  max-height: 600px;
+  height: 450px;
   min-width: 300px;
 }
 
