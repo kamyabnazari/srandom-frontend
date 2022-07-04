@@ -99,7 +99,8 @@ export default {
         .catch(error => console.log('error', error))
     },
     showFavoriteSong (songId) {
-      console.log('I have been called!' + songId)
+      this.songs[0] = this.favoriteSongs[this.favoriteSongs.findIndex((song) => song.id === songId)]
+      this.showHeart = this.songs[0].isFavorite
     },
     async setFavoriteState (songId, state) {
       const myHeaders = new Headers()
