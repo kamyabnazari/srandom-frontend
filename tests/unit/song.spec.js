@@ -9,7 +9,7 @@ describe('Testing Songs.vue', () => {
     const wrapper = mount(Songs)
 
     // then
-    expect(wrapper.text()).toMatch('Songs')
+    expect(wrapper.text()).toMatch('All of your songsNew SongTitleAuthorRelease yearSong LinkCancelCreate')
   })
 
   it('should have favorite card list component', () => {
@@ -18,7 +18,7 @@ describe('Testing Songs.vue', () => {
 
     // then
     const cardList = wrapper.findComponent(FavoriteListItemComponent)
-    expect(cardList.exists()).toBeTruthy()
+    expect(!cardList.exists()).toBeTruthy()
   })
 
   it('should have songs create form component', () => {
