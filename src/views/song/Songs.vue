@@ -2,6 +2,7 @@
   <h1 class="page-header">All of <span style="color: var(--primary-color)">your</span> songs</h1>
   <div class="container-fluid">
     <div class="row row-cols-auto gap-5 justify-content-center mb-5">
+      <spinner-component v-show="showSpinner" />
       <div class="col" v-for="song in songs" :key="song.id">
         <song-card :song="song" :remove-button-available="true" @removeSongEvent="removeSong"/>
       </div>
@@ -13,18 +14,20 @@
 <script>
 import SongCreateForm from '@/components/SongCreateFormComponent'
 import SongCard from '@/components/SongCardComponent'
+import SpinnerComponent from '@/components/SpinnerComponent'
 
 export default {
   name: 'AllSongs',
   emits: ['removeSongEvent', 'addSongEvent'],
   components: {
+    SpinnerComponent,
     SongCreateForm,
     SongCard
   },
   data () {
     return {
       songs: [],
-      required: true
+      showSpinner: true
     }
   },
   mounted () {
@@ -43,6 +46,7 @@ export default {
           this.songs.push(song)
         }))
         .catch(error => console.log('error', error))
+      this.showSpinner = false
     },
     async addSong (title, author, releaseYear, songLink) {
       const myHeaders = new Headers()

@@ -5,7 +5,8 @@
     <div class="row row-cols-auto gap-5 d-flex justify-content-center px-5">
       <div class="col-sm">
         <h1 class="list-header" style="color: var(--warning-color)">Favorites</h1>
-        <ul class="list-group overflow-scroll" >
+        <spinner-component v-show="showSpinner" />
+        <ul class="list-group overflow-scroll">
           <li align-items-center v-for="song in favoriteSongs" :key="song.id">
             <FavoriteListItemComponent :song="song" @showFavoriteSongEvent="showFavoriteSong"/>
           </li>
@@ -13,6 +14,7 @@
       </div>
       <div class="col-sm random-song">
         <div class="mb-4">
+          <spinner-component v-show="showSpinner" />
           <heart-button-component v-for="song in songs" :key="song.id" :song="song"
                                   @setFavoriteStateEvent="setFavoriteState"/>
           <button class="button-util button-renew shadow m-2" @click="retryRandomSong">
@@ -49,7 +51,7 @@ export default {
     return {
       songs: [],
       favoriteSongs: [],
-      required: true
+      showSpinner: true
     }
   },
   mounted () {
@@ -58,6 +60,7 @@ export default {
   },
   methods: {
     retryRandomSong () {
+      this.showSpinner = true
       this.songs.pop()
       this.fetchRandomSong()
     },
@@ -71,6 +74,7 @@ export default {
         .then(response => response.json())
         .then(result => this.songs.push(result))
         .catch(error => console.log('error', error))
+      this.showSpinner = false
     },
     async fetchFavoriteSongs () {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/songs/favorites'
@@ -84,6 +88,7 @@ export default {
           this.favoriteSongs.push(song)
         }))
         .catch(error => console.log('error', error))
+      this.showSpinner = false
     },
     showFavoriteSong (songId) {
       console.log('I have been called!' + songId)
