@@ -7,7 +7,7 @@ describe('Testing Navigation bar in App.vue', () => {
     // when
     const wrapper = mount(App)
     // then
-    expect(wrapper.text()).toMatch('SrandomHomeSongsAbout UsRegister Login')
+    expect(wrapper.text()).toMatch('SrandomHomeSongsAbout')
   })
 
   it('should have navbar component', () => {
