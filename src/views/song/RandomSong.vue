@@ -3,7 +3,8 @@
 
   <div class="container-fluid">
     <div class="row row-cols-auto gap-5 d-flex justify-content-center px-5">
-      <div class="col-sm">
+      <spinner-component v-show="showSpinner"/>
+      <div class="col-sm" v-show="!showSpinner">
         <h1 class="list-header" style="color: var(--warning-color)">Favorites</h1>
         <ul class="list-group overflow-scroll">
           <li align-items-center v-for="song in favoriteSongs" :key="song.id">
@@ -53,14 +54,19 @@ export default {
     return {
       songs: [],
       favoriteSongs: [],
-      showHeart: true
+      showHeart: true,
+      showSpinner: true
     }
   },
   mounted () {
     this.fetchRandomSong()
     this.fetchFavoriteSongs()
+    this.showContent()
   },
   methods: {
+    showContent () {
+      this.showSpinner = false
+    },
     retryRandomSong () {
       this.songs.pop()
       this.fetchRandomSong()
