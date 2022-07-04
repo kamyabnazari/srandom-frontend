@@ -23,6 +23,7 @@ export default {
   min-height: 200px;
   max-height: 700px;
   border-radius: 20px;
+  margin: 100px;
 }
 
 .random-button {

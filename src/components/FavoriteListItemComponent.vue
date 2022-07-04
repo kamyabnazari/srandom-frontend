@@ -3,7 +3,7 @@
           @click="showFavoriteSong">
     <div class="row w-100 align-items-center">
       <div class="col col-7">
-        <h5 style="font-weight: bold;">{{ song.title }}</h5>
+        <h6 style="font-weight: bold;">{{ song.title }}</h6>
       </div>
       <div class="col col-3">
         <h6 class="text-start">{{ song.author }}</h6>

@@ -1,7 +1,7 @@
 <template>
   <div class="card mb-5 info-card p-5 shadow ">
     <h5 class="list-header mb-5 text-center" style="color: var(--important-color)">Guide</h5>
-    <h5 class="card-text">
+    <h6 class="card-text">
       Click on
       <font-awesome-icon icon="fa-solid fa-rotate-right" size="1x" style="color:var(--important-color)"/>
       to get another <span style="color: var(--important-color)">random song</span>!
@@ -30,7 +30,7 @@
       and click on
       <font-awesome-icon icon="fa-solid fa-circle-xmark" size="1x" style="color:var(--warning-color)"/>
       on the top right side of the song.
-    </h5>
+    </h6>
   </div>
 </template>
 

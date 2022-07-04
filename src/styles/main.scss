@@ -55,8 +55,8 @@
 .page-header {
   text-align: center;
   font-weight: 700;
-  font-size: 50px;
-  padding: 50px;
+  font-size: 40px;
+  padding: 25px;
   margin-top: 50px;
   margin-bottom: 50px;
 }
@@ -64,8 +64,8 @@
 .list-header {
   text-align: center;
   font-weight: 700;
-  font-size: 35px;
-  margin-bottom: 50px;
+  font-size: 30px;
+  margin-bottom: 25px;
 }
 
 .not-found {
@@ -107,4 +107,8 @@
 
 .button-renew {
   color: var(--important-color);
+}
+
+.d-flex {
+  background-color: var(--background-color)
 }

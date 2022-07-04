@@ -1,7 +1,7 @@
 <template>
   <h1 class="page-header">All of <span style="color: var(--primary-color)">your</span> songs</h1>
   <div class="container-fluid">
-    <div class="row row-cols-auto gap-5 justify-content-center mb-5">
+    <div class="row row-cols-auto gap-5 justify-content-center mb-5 align-items-center">
       <spinner-component v-show="showSpinner"/>
       <div class="col" v-for="song in songs" :key="song.id">
         <song-card :song="song" :remove-button-available="true" @removeSongEvent="removeSong"/>

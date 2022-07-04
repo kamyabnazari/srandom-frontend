@@ -7,10 +7,10 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="toggleMobileMenu">
-      <ul class="navbar-nav mr-auto">
-        <router-link class="nav-link" to="/"><h5>Home</h5></router-link>
-        <router-link class="nav-link" to="/songs"><h5>Songs</h5></router-link>
-        <router-link class="nav-link" to="/about-us"><h5>About Us</h5></router-link>
+      <ul class="navbar-nav mr-auto align-items-center">
+        <router-link class="nav-link" to="/"><h6>Home</h6></router-link>
+        <router-link class="nav-link" to="/songs"><h6>Songs</h6></router-link>
+        <router-link class="nav-link" to="/about-us"><h6>About Us</h6></router-link>
       </ul>
       <div class="btn-group ms-auto" role="group">
         <button type="button" class="btn-lg custom-button button-white "
@@ -73,7 +73,7 @@ h1 {
   color: var(--element-color);
 }
 
-h5 {
+h6 {
   font-weight: bold;
   margin-bottom: 0;
 }
