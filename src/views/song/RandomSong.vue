@@ -5,8 +5,10 @@
     <div class="row row-cols-auto gap-5 d-flex justify-content-center px-5">
       <div class="col-sm">
         <h1 class="list-header" style="color: var(--warning-color)">Favorites</h1>
-        <ul class="list-group align-items-center" v-for="song in favoriteSongs" :key="song.id">
-          <FavoriteListItemComponent :song="song" @showFavoriteSongEvent="showFavoriteSong"/>
+        <ul class="list-group overflow-scroll" >
+          <li align-items-center v-for="song in favoriteSongs" :key="song.id">
+            <FavoriteListItemComponent :song="song" @showFavoriteSongEvent="showFavoriteSong"/>
+          </li>
         </ul>
       </div>
       <div class="col-sm random-song">
@@ -144,6 +146,7 @@ export default {
 }
 
 .list-group {
+  max-height: 600px;
   min-width: 300px;
 }
 
