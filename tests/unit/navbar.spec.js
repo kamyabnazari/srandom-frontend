@@ -2,13 +2,13 @@ import { mount } from '@vue/test-utils'
 import App from '@/App'
 import NavbarComponent from '@/components/NavbarComponent'
 
-describe('Testing App.vue', () => {
+describe('Testing Navigation bar in App.vue', () => {
   it('should show page title', () => {
     // when
     const wrapper = mount(App)
 
     // then
-    expect(wrapper.text()).toMatch('SrandomHomeSongsAboutUsRegisterLogin')
+    expect(wrapper.text()).toMatch('SrandomHomeSongsAbout UsRegister Login')
   })
 
   it('should have navbar component', () => {
@@ -16,7 +16,7 @@ describe('Testing App.vue', () => {
     const wrapper = mount(App)
 
     // then
-    const cardList = wrapper.findComponent(NavbarComponent)
-    expect(cardList.exists()).toBeTruthy()
+    const navBar = wrapper.findComponent(NavbarComponent)
+    expect(navBar.exists()).toBeTruthy()
   })
 })
