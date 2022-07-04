@@ -1,7 +1,8 @@
 <template>
   <div class="card shadow">
     <div class="card-body text-center">
-      <button v-if="song.isOriginal===false && this.removeButtonAvailable===true" class="button-util m-2" @click="removeSong" >
+      <button v-if="song.isOriginal===false && this.removeButtonAvailable===true" class="button-util m-2"
+              @click="removeSong">
         <font-awesome-icon icon="fa-solid fa-circle-xmark" size="3x"/>
       </button>
       <span v-if="song.isOriginal===true" class="badge badge-primary mb-0 mx-1">Original</span>
