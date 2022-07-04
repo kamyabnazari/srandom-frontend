@@ -31,7 +31,7 @@ export default {
     }
   },
   mounted () {
-    this.fetchSongs()
+    setTimeout(this.fetchSongs, 300)
   },
   methods: {
     async fetchSongs () {
@@ -40,6 +40,7 @@ export default {
         method: 'GET',
         redirect: 'follow'
       }
+
       await fetch(endpoint, requestOptions)
         .then(response => response.json())
         .then(result => result.forEach(song => {
@@ -68,7 +69,7 @@ export default {
         redirect: 'follow'
       }
 
-      var responsePost = []
+      const responsePost = []
 
       if (this.songs.some((song) => song.title === title && song.author === author && song.releaseYear === releaseYear)) {
         this.$notify({
