@@ -2,13 +2,13 @@
   <button class="shadow-sm list-group-item list-group-item-action mb-2"
           @click="showFavoriteSong">
     <div class="row w-100 align-items-center">
-      <div class="col">
+      <div class="col col-5">
         <h5 style="font-weight: bold;">{{ song.title }}</h5>
       </div>
-      <div class="col">
+      <div class="col col-5">
         <h6 class="text-start">{{ song.author }}</h6>
       </div>
-      <div class="col text-end">
+      <div class="col col-2 text-end">
         <font-awesome-icon icon="fa-solid fa-eye" style="color: var(--primary-color)"/>
       </div>
     </div>
