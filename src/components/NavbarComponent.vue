@@ -7,7 +7,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="toggleMobileMenu">
-      <ul class="navbar-nav mr-auto align-items-center">
+      <ul class="navbar-nav mr-auto">
         <router-link class="nav-link" to="/"><h6>Home</h6></router-link>
         <router-link class="nav-link" to="/songs"><h6>Songs</h6></router-link>
         <router-link class="nav-link" to="/about-us"><h6>About Us</h6></router-link>
