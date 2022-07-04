@@ -2,10 +2,10 @@
   <button class="shadow-sm list-group-item list-group-item-action mb-2"
           @click="showFavoriteSong">
     <div class="row w-100 align-items-center">
-      <div class="col col-5">
+      <div class="col col-7">
         <h5 style="font-weight: bold;">{{ song.title }}</h5>
       </div>
-      <div class="col col-5">
+      <div class="col col-3">
         <h6 class="text-start">{{ song.author }}</h6>
       </div>
       <div class="col col-2 text-end">

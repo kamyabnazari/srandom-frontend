@@ -2,17 +2,17 @@
   <h1 class="page-header">Your <span style="color: var(--primary-color)">song</span>!</h1>
 
   <div class="container-fluid">
+    <spinner-component v-show="showSpinner"/>
     <div class="row row-cols-auto gap-5 d-flex justify-content-center px-5">
-      <spinner-component v-show="showSpinner"/>
       <div class="col-sm" v-show="!showSpinner">
         <h1 class="list-header" style="color: var(--warning-color)">Favorites</h1>
         <ul class="list-group overflow-scroll">
-          <li align-items-center v-for="song in favoriteSongs" :key="song.id">
+          <li v-for="song in favoriteSongs" :key="song.id">
             <FavoriteListItemComponent :song="song" @showFavoriteSongEvent="showFavoriteSong"/>
           </li>
         </ul>
       </div>
-      <div class="col-sm random-song">
+      <div class="col-sm random-song" v-show="!showSpinner">
         <div class="mb-4">
           <button v-show="!showHeart" class="button-util button-heart shadow m-2"
                   @click="setFavoriteState(this.songs[0].id, true)">
@@ -30,7 +30,7 @@
           <song-card :song="song" :remove-button-available="false"></song-card>
         </div>
       </div>
-      <div class="col-sm">
+      <div class="col-sm" v-show="!showSpinner">
         <guide-card-component/>
       </div>
     </div>
@@ -41,11 +41,13 @@
 import SongCard from '@/components/SongCardComponent'
 import GuideCardComponent from '@/components/GuideCardComponent'
 import FavoriteListItemComponent from '@/components/FavoriteListItemComponent'
+import SpinnerComponent from '@/components/SpinnerComponent'
 
 export default {
   name: 'RandomSong',
   emits: ['showFavoriteSongEvent'],
   components: {
+    SpinnerComponent,
     FavoriteListItemComponent,
     GuideCardComponent,
     SongCard
@@ -61,7 +63,7 @@ export default {
   mounted () {
     this.fetchRandomSong()
     this.fetchFavoriteSongs()
-    this.showContent()
+    setTimeout(this.showContent, 300)
   },
   methods: {
     showContent () {
