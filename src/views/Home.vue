@@ -1,7 +1,7 @@
 <template>
   <h1 class="page-header">Click to get <span style="color: var(--primary-color)">your</span> random song</h1>
   <div class="d-flex justify-content-center align-items-center">
-    <img class="banner-image" alt="Vue logo" src="../assets/srandomDesign.png">
+    <img class="banner-image" alt="Vue logo" src="../assets/srandomDesign.jpg">
     <div class="random-button">
       <font-awesome-icon icon="fa-solid fa-circle-play" class="play-icon" beat size="10x"
                          style="--fa-animation-duration: 2.5s; --fa-beat-scale: 1.2;"
