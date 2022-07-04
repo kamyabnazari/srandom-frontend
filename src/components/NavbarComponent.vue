@@ -12,14 +12,6 @@
         <router-link class="nav-link" to="/songs"><h6>Songs</h6></router-link>
         <router-link class="nav-link" to="/about-us"><h6>About Us</h6></router-link>
       </ul>
-      <div class="btn-group ms-auto" role="group">
-        <button type="button" class="btn-lg custom-button button-white "
-                @click="$router.push({path: '/account-register'})">Register
-        </button>
-        <button type="button" class="btn-lg custom-button button-yellow "
-                @click="$router.push({path: '/account-login'})">Login
-        </button>
-      </div>
     </div>
   </nav>
 </template>

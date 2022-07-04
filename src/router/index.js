@@ -4,8 +4,6 @@ import About from '../views/other/AboutUs.vue'
 import Songs from '../views/song/Songs.vue'
 import RandomSong from '@/views/song/RandomSong'
 import NotFound from '../views/other/NotFound.vue'
-import AccountLogin from '@/views/account/AccountLogin'
-import AccountRegister from '@/views/account/AccountRegister'
 
 const routes = [
   {
@@ -27,16 +25,6 @@ const routes = [
     path: '/songs',
     name: 'Songs',
     component: Songs
-  },
-  {
-    path: '/account-login',
-    name: 'AccountLogin',
-    component: AccountLogin
-  },
-  {
-    path: '/account-register',
-    name: 'AccountRegister',
-    component: AccountRegister
   },
   {
     path: '/:catchAll(.*)',
