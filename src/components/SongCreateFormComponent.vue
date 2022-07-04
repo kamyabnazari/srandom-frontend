@@ -7,7 +7,7 @@
 
   <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content px-4 py-2">
         <div class="modal-header">
           <h5 class="modal-title" id="formModalLabel">New Song</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -34,9 +34,9 @@
               <input type="text" minlength="1" maxlength="100" class="form-control" id="songLink"
                      placeholder="https://song-link.example" v-model="songLink" required>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cancel</button>
-              <button class="btn btn-primary me-3 btn-lg" type="submit" value="submit">Create</button>
+            <div class="modal-footer justify-content-center">
+              <button type="button" class="custom-button button-grey btn-lg me-5" data-bs-dismiss="modal">Cancel</button>
+              <button class="custom-button button-blue btn-lg" type="submit" value="submit">Create</button>
             </div>
           </form>
         </div>

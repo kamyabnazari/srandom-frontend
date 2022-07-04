@@ -41,6 +41,18 @@
   background-color: var(--important-color);
 }
 
+.button-blue {
+  color: var(--element-color);
+  border-color: var(--primary-color);
+  background-color: var(--primary-color);
+}
+
+.button-grey {
+  color: var(--element-color);
+  border-color: var(--default-color);
+  background-color: var(--default-color);
+}
+
 .page-header {
   text-align: center;
   font-weight: 700;
@@ -68,7 +80,7 @@
 }
 
 .custom-notification {
-  margin: 75px 25px 25px 0px;
+  margin: 75px 25px 25px;
   padding: 10px;
   font-size: 12px;
 
