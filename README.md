@@ -1,34 +1,34 @@
+# Srandom Frontend
+
+![Banner Image](/readme-screenshot.jpg)
+
+## Status
+
 [![Frontend CI](https://github.com/kamyab-nazari/Srandom-Frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/kamyab-nazari/Srandom-Frontend/actions/workflows/ci.yml)
 
-# Srandom-Frontend
+## Description
 
-## Beschreibung
+The following application, "Srandom," serves the purpose of suggesting random songs and recommendations to visitors and making them available for further listening with just a click.
 
-Die folgende Applikation "Srandom" erfüllt die Aufgabe, zufällige Lieder und Empfehlungen den Besucher vorzuschlagen und
-diese mit einem Klick für weiteres hören zur Verfügung zustellen.
+This is the frontend of the application.
 
-Hier befindet sich das Frontend der Applikation.
+## Instructions
 
-## Anleitung
+Click the repeat button to hear another random song!
 
-Klicken Sie auf die Wiederholungstaste, um ein weiteres zufälliges Lied zu hören!
+Click the heart button to save the song as a favorite.
 
-Klicken Sie auf die Herz-Schaltfläche, um das Lied als Favorit zu speichern.
+Click a song in the favorites list to open it.
 
-Klicken Sie auf ein Lied in der Favoritenliste, um es zu öffnen.
+Click the "Listen" button to go to the song's link, so you can listen to the song.
 
-Klicken Sie auf die Schaltfläche "Anhören", um zum Link des Liedes zu gelangen, sodass Sie das Lied anhören können.
+If you want to remove the song from your favorites, select the song and click the button with the broken heart.
 
-Wenn Sie das Lied aus Ihren Favoriten entfernen möchten, wählen Sie das Lied aus und klicken Sie auf die Schaltfläche
-mit dem gebrochenen Herzen.
+If you want to add your own song to the library, go to Songs and click the plus button in the lower right corner of the screen.
 
-Wenn Sie der Bibliothek Ihren eigenen Song hinzufügen möchten, gehen Sie zu Songs und klicken Sie auf die
-Plus-Schaltfläche unten rechts auf dem Bildschirm.
+If you do not want to have the song in your library, remove it by going to Songs and clicking the button with the cross in the upper right next to the song.
 
-Wenn Sie das Lied nicht in Ihrer Bibliothek haben möchten, entfernen Sie es, indem Sie zu Lieder gehen und auf die
-Schaltfläche mit dem Kreuz oben rechts neben dem Lied klicken.
-
-## Mitglieder
+## Members
 
 * Florina Jonuzi
 * Kamyab Nazari
